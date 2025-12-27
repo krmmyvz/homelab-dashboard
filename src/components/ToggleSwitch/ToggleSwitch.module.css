@@ -74,7 +74,8 @@
     align-items: center;
     justify-content: center;
     left: 0;
-    top: 50%;
+    top: 12%;
+    /* User requested fix */
     transform: translateY(-50%);
     border-radius: 50%;
     box-shadow: var(--elevation-1);
