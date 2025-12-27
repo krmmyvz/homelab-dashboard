@@ -20,8 +20,8 @@ const trackVariants = {
 const handleVariants = {
   unchecked: {
     x: 4,
-    width: 16,
-    height: 16,
+    width: 24, // Standardized to 24 for consistency
+    height: 24,
     backgroundColor: 'var(--color-outline)',
   },
   checked: {

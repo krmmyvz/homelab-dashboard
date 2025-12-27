@@ -57,10 +57,10 @@
     flex-direction: column;
     border-radius: 0;
     overflow: hidden;
-    background-color: var(--color-surface);
+    background-color: transparent;
+    /* Changed from surface to transparent */
     border: none;
-    border-top: 1px solid var(--color-outline-variant);
-    border-bottom: 1px solid var(--color-outline-variant);
+    /* Borders removed to prevent double borders inside SettingsGroup */
     box-shadow: none;
 }
 
