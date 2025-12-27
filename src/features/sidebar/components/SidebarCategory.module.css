@@ -22,7 +22,7 @@
   text-align: left;
   position: relative;
   overflow: hidden;
-  transition: all var(--motion-duration-short) var(--motion-easing-standard);
+  transition: background-color var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .itemButton::before {
@@ -102,7 +102,8 @@
   color: var(--color-on-surface-variant);
   flex-shrink: 0;
   z-index: 1;
-  transition: all var(--motion-duration-short) var(--motion-easing-standard);
+  transition: color var(--motion-duration-short) var(--motion-easing-standard),
+    transform var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 /* Daraltılmış durumdaki her bir kategori butonu için */
@@ -380,7 +381,8 @@
   font-size: var(--typography-labelSmall-fontSize);
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--motion-duration-short);
+  transition: background-color var(--motion-duration-short),
+    color var(--motion-duration-short);
   min-height: 24px;
   display: inline-flex;
   align-items: center;

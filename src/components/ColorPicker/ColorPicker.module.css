@@ -15,7 +15,9 @@
   border: 1px solid var(--color-outline);
   border-radius: var(--shape-corner-medium);
   cursor: pointer;
-  transition: all var(--motion-duration-short2) var(--motion-easing-standard);
+  transition: background-color var(--motion-duration-short2) var(--motion-easing-standard),
+    border-color var(--motion-duration-short2) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-short2) var(--motion-easing-standard);
   font-family: var(--font-family);
   font-size: var(--font-size-body-medium);
   color: var(--color-on-surface);
@@ -45,7 +47,8 @@
   flex: 1;
   text-align: left;
   font-weight: var(--font-weight-medium);
-  display: none; /* Label'ı gizle, sadece renk preview göster */
+  display: none;
+  /* Label'ı gizle, sadece renk preview göster */
 }
 
 .colorIcon {
@@ -105,7 +108,8 @@
   border: 1px solid var(--color-outline);
   border-radius: var(--shape-corner-medium);
   cursor: pointer;
-  transition: all var(--motion-duration-short2) var(--motion-easing-standard);
+  transition: border-color var(--motion-duration-short2) var(--motion-easing-standard),
+    background-color var(--motion-duration-short2) var(--motion-easing-standard);
 }
 
 .customColorDisplay:hover {
@@ -188,7 +192,8 @@
   height: 100%;
   border-radius: var(--shape-corner-small);
   border: 2px solid var(--color-outline);
-  transition: all var(--motion-duration-short2) var(--motion-easing-standard);
+  transition: border-color var(--motion-duration-short2) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-short2) var(--motion-easing-standard);
 }
 
 .presetColorButton:hover .presetColorSwatch {

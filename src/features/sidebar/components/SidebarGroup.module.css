@@ -28,7 +28,7 @@
   border: none;
   position: relative;
   overflow: hidden;
-  transition: all var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+  transition: background-color var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
 }
 
 .groupItemWrapper.inFlyout button::before {
@@ -87,7 +87,8 @@
   border-radius: var(--shape-corner-full, 9999px);
   background-color: var(--color-surface-variant);
   color: var(--color-on-surface-variant);
-  transition: all var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+  transition: background-color var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease),
+    color var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
 }
 
 /* Drag handle - hidden by default */
@@ -164,7 +165,8 @@
   font-size: var(--typography-labelSmall-fontSize, 11px);
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+  transition: background-color var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease),
+    color var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
   min-height: 24px;
   display: inline-flex;
   align-items: center;

@@ -17,7 +17,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: all var(--motion-duration-short2) var(--motion-easing-standard);
+  transition: transform var(--motion-duration-short2) var(--motion-easing-standard);
 }
 
 .patternButton.selected .patternPreview {
@@ -33,7 +33,9 @@
   border: 2px solid var(--color-outline);
   overflow: hidden;
   background: var(--color-surface);
-  transition: all var(--motion-duration-short2) var(--motion-easing-standard);
+  transition: border-color var(--motion-duration-short2) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-short2) var(--motion-easing-standard),
+    transform var(--motion-duration-short2) var(--motion-easing-standard);
 }
 
 .patternButton:hover .patternPreview {
@@ -84,11 +86,11 @@
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: var(--spacing-sm);
   }
-  
+
   .patternName {
     font-size: var(--font-size-label-xsmall);
   }
-  
+
   .selectedIndicator {
     width: 28px;
     height: 28px;

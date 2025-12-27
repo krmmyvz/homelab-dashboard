@@ -9,7 +9,7 @@
   overflow: hidden;
   background-color: var(--color-background);
   position: relative;
-  transition: all var(--motion-duration-medium) var(--motion-easing-standard);
+  transition: background-color var(--motion-duration-medium) var(--motion-easing-standard);
 }
 
 /* Main content wrapper - header ve dashboard-body'yi içerir */

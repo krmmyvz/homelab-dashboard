@@ -1,64 +1,65 @@
 /* --- src/components/EmptyState/EmptyState.module.css --- */
 
 .emptyStateContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: var(--spacing-8);
-    margin: auto; /* Konteyner içinde dikey ve yatay ortalamak için */
-    border-radius: var(--shape-corner-xl);
-    background-color: var(--color-surface-variant);
-    border: 2px dashed var(--color-outline);
-    max-width: 500px;
-  }
-  
-  .iconWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: var(--color-surface);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-5);
-  }
-  
-  .title {
-    font-size: var(--typography-headlineSmall-fontSize);
-    font-weight: var(--typography-headlineSmall-fontWeight);
-    color: var(--color-on-surface);
-    margin-bottom: var(--spacing-2);
-  }
-  
-  .message {
-    font-size: var(--typography-bodyLarge-fontSize);
-    color: var(--color-on-surface-variant);
-    max-width: 350px;
-    margin-bottom: var(--spacing-6);
-  }
-  
-  .actionButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 48px;
-    padding: 0 var(--spacing-6);
-    border-radius: var(--shape-corner-full);
-    border: none;
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-    cursor: pointer;
-    font-size: var(--typography-labelLarge-fontSize);
-    font-weight: var(--typography-labelLarge-fontWeight);
-    gap: var(--spacing-2);
-    transition: all var(--motion-duration-medium);
-  }
-  
-  .actionButton:hover {
-    filter: brightness(0.9);
-    transform: scale(1.02);
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-8);
+  margin: auto;
+  /* Konteyner içinde dikey ve yatay ortalamak için */
+  border-radius: var(--shape-corner-xl);
+  background-color: var(--color-surface-variant);
+  border: 2px dashed var(--color-outline);
+  max-width: 500px;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-5);
+}
+
+.title {
+  font-size: var(--typography-headlineSmall-fontSize);
+  font-weight: var(--typography-headlineSmall-fontWeight);
+  color: var(--color-on-surface);
+  margin-bottom: var(--spacing-2);
+}
+
+.message {
+  font-size: var(--typography-bodyLarge-fontSize);
+  color: var(--color-on-surface-variant);
+  max-width: 350px;
+  margin-bottom: var(--spacing-6);
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 var(--spacing-6);
+  border-radius: var(--shape-corner-full);
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  cursor: pointer;
+  font-size: var(--typography-labelLarge-fontSize);
+  font-weight: var(--typography-labelLarge-fontWeight);
+  gap: var(--spacing-2);
+  transition: filter var(--motion-duration-medium),
+    transform var(--motion-duration-medium);
+}
+
+.actionButton:hover {
+  filter: brightness(0.9);
+  transform: scale(1.02);
+}

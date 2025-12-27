@@ -84,7 +84,9 @@
   font-size: var(--typography-labelLarge-fontSize);
   font-weight: var(--typography-labelLarge-fontWeight);
   cursor: pointer;
-  transition: all var(--motion-duration-medium);
+  transition: background-color var(--motion-duration-medium),
+    color var(--motion-duration-medium),
+    transform var(--motion-duration-medium);
   min-height: 44px;
   /* Accessibility: minimum touch target */
 }

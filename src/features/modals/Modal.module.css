@@ -127,7 +127,8 @@
   background-color: var(--color-surface);
   color: var(--color-on-surface);
   font-size: var(--typography-bodyLarge-fontSize);
-  transition: all var(--motion-duration-medium);
+  transition: border-color var(--motion-duration-medium),
+    box-shadow var(--motion-duration-medium);
 }
 
 .input:focus,
@@ -170,7 +171,8 @@
   font-size: var(--typography-labelLarge-fontSize);
   font-weight: var(--typography-labelLarge-fontWeight);
   cursor: pointer;
-  transition: all var(--motion-duration-medium);
+  transition: background-color var(--motion-duration-medium),
+    opacity var(--motion-duration-medium);
 }
 
 .button:hover {
@@ -220,7 +222,8 @@
   border-radius: var(--shape-corner-md);
   border: 1px solid var(--color-outline);
   background-color: var(--color-surface);
-  transition: all var(--motion-duration-medium);
+  transition: border-color var(--motion-duration-medium),
+    box-shadow var(--motion-duration-medium);
 }
 
 .tagInputContainer:focus-within {
@@ -319,7 +322,9 @@
   background-color: var(--color-surface);
   color: var(--color-on-surface-variant);
   cursor: pointer;
-  transition: all var(--motion-duration-medium);
+  transition: border-color var(--motion-duration-medium),
+    background-color var(--motion-duration-medium),
+    color var(--motion-duration-medium);
   font-size: var(--typography-titleMedium-fontSize);
   padding: var(--spacing-2) var(--spacing-4);
 }

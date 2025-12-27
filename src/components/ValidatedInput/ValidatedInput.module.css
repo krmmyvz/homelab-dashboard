@@ -33,7 +33,8 @@
 
 .input {
   width: 100%;
-  min-height: 44px; /* Accessibility: minimum touch target */
+  min-height: 44px;
+  /* Accessibility: minimum touch target */
   padding: var(--spacing-3) var(--spacing-4);
   border-radius: var(--shape-corner-md);
   border: 2px solid var(--color-outline);
@@ -41,7 +42,9 @@
   color: var(--color-on-surface);
   font-size: var(--typography-bodyLarge-fontSize);
   font-family: inherit;
-  transition: all var(--motion-duration-medium);
+  transition: border-color var(--motion-duration-medium),
+    box-shadow var(--motion-duration-medium),
+    background-color var(--motion-duration-medium);
   outline: none;
 }
 
@@ -71,7 +74,8 @@
 }
 
 .input.validating {
-  padding-right: calc(var(--spacing-4) + 24px); /* Space for spinner */
+  padding-right: calc(var(--spacing-4) + 24px);
+  /* Space for spinner */
 }
 
 .validatingIcon {
@@ -93,8 +97,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .errorIcon {
@@ -122,11 +131,11 @@
   .input {
     border: 2px solid ButtonText;
   }
-  
+
   .input:focus {
     border: 2px solid Highlight;
   }
-  
+
   .input.error {
     border: 2px solid Mark;
   }
@@ -134,12 +143,13 @@
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   .input,
   .spinner {
     transition: none;
     animation: none;
   }
-  
+
   .spinner {
     border-top-color: var(--color-on-surface-variant);
   }
