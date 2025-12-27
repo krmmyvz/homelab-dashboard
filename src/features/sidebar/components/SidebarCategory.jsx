@@ -68,14 +68,14 @@ const SidebarCategory = ({ item, category, type }) => {
     const { uiPrefs, setUiPref, hoveredCategory, setHoveredCategory, openSettings } = useContext(UIContext);
     const { appSettings } = useContext(SettingsContext);
     const { activeView, isSidebarCollapsed } = uiPrefs;
-    
+
     const sidebarSettings = appSettings?.sidebar || {};
     const showLabels = sidebarSettings.showLabels !== false; // Default true
-    
+
     const isSelected = activeView.id === data.id;
     // Use data.groups from server
     const categoryGroups = (data && data.groups) ? data.groups : [];
-    
+
     const hasGroups = type === VIEW_TYPES.CATEGORY && categoryGroups.length > 0;
     const isDropdownOpen = !isSidebarCollapsed && uiPrefs?.activeCategoryDropdown === data.id;
 
@@ -95,12 +95,12 @@ const SidebarCategory = ({ item, category, type }) => {
 
     const handleRetry = async () => {
         if (retryCount >= 3) return; // Max 3 retries
-        
+
         setRetryCount(prev => prev + 1);
         setHasError(false);
         setErrorMessage('');
         setIsLoading(true);
-        
+
         try {
             // Here you would implement actual data fetching retry logic
             // For now, just simulate a delay
@@ -113,16 +113,16 @@ const SidebarCategory = ({ item, category, type }) => {
     };
 
     // Log render state for debugging dropdown mount issues
-    useEffect(() => {}, [hasGroups, isDropdownOpen, uiPrefs?.activeCategoryDropdown, categoryGroups.length]);
+    useEffect(() => { }, [hasGroups, isDropdownOpen, uiPrefs?.activeCategoryDropdown, categoryGroups.length]);
     const showFlyOut = hoveredCategory === data.id && isSidebarCollapsed;
-    
+
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             handleClick();
         }
     };
-    
+
     const handleClick = () => {
         // Settings özel davranışı
         if (type === VIEW_TYPES.SETTINGS) {
@@ -131,7 +131,7 @@ const SidebarCategory = ({ item, category, type }) => {
         }
 
         // Debug: log click intent and current state to help trace dropdown toggle
-    // click handler - no debug logs
+        // click handler - no debug logs
 
         setUiPref('activeView', { type: type, id: data.id });
         setHoveredCategory(null);
@@ -144,7 +144,7 @@ const SidebarCategory = ({ item, category, type }) => {
             setUiPref('activeCategoryDropdown', null);
         }
     };
-    
+
     const handleMouseEnter = () => {
         if (isSidebarCollapsed) {
             clearTimeout(hideFlyoutTimeout);
@@ -158,9 +158,9 @@ const SidebarCategory = ({ item, category, type }) => {
             }, 100);
         }
     };
-    
+
     useEffect(() => { return () => clearTimeout(hideFlyoutTimeout); }, []);
-    
+
     const IconComponent = iconComponents[(data || {}).iconName] || Settings;
 
     return (
@@ -184,9 +184,14 @@ const SidebarCategory = ({ item, category, type }) => {
                         <IconComponent size={20} />
                     </div>
                     {showLabels && (
-                        <motion.span 
+                        <motion.span
                             className={styles.title}
-                            animate={{ opacity: isSidebarCollapsed ? 0 : 1, width: isSidebarCollapsed ? 0 : 'auto', marginLeft: isSidebarCollapsed ? 0 : 'var(--spacing-3)' }}
+                            /* Allow CSS to control layout in collapsed (Rail) mode */
+                            animate={{
+                                opacity: 1,
+                                width: 'auto',
+                                marginLeft: isSidebarCollapsed ? 0 : 'var(--spacing-3)'
+                            }}
                             transition={{ duration: 0.2 }}
                         >
                             {data?.title || data?.name || data?.id || 'Kategori'}
@@ -194,7 +199,7 @@ const SidebarCategory = ({ item, category, type }) => {
                     )}
                     <AnimatePresence>
                         {!isSidebarCollapsed && hasGroups && (
-                            <motion.div 
+                            <motion.div
                                 className={styles.chevron}
                                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                                 transition={{ duration: 0.1 }}
@@ -205,31 +210,31 @@ const SidebarCategory = ({ item, category, type }) => {
                         )}
                     </AnimatePresence>
                 </SidebarButton>
-                
+
                 {/* Error Message with Retry */}
                 {hasError && errorMessage && (
-                  <div className={`${styles.errorMessage} ${styles.small}`} role="alert" aria-live="polite">
-                    <span>{errorMessage}</span>
-                    {retryCount < 3 && (
-                      <button 
-                        onClick={handleRetry}
-                        className={styles.retryButton}
-                        aria-label="Tekrar dene"
-                      >
-                        Tekrar Dene
-                      </button>
-                    )}
-                  </div>
+                    <div className={`${styles.errorMessage} ${styles.small}`} role="alert" aria-live="polite">
+                        <span>{errorMessage}</span>
+                        {retryCount < 3 && (
+                            <button
+                                onClick={handleRetry}
+                                className={styles.retryButton}
+                                aria-label="Tekrar dene"
+                            >
+                                Tekrar Dene
+                            </button>
+                        )}
+                    </div>
                 )}
-                
+
                 <AnimatePresence>
                     {!isSidebarCollapsed && isDropdownOpen && (
-                        <motion.div 
-                            className={styles.dropdownContainer} 
-                            initial="collapsed" 
-                            animate="open" 
-                            exit="collapsed" 
-                            variants={{ open: { opacity: 1, height: 'auto' }, collapsed: { opacity: 0, height: 0 } }} 
+                        <motion.div
+                            className={styles.dropdownContainer}
+                            initial="collapsed"
+                            animate="open"
+                            exit="collapsed"
+                            variants={{ open: { opacity: 1, height: 'auto' }, collapsed: { opacity: 0, height: 0 } }}
                             transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}>
                             {/* DÜZELTME: SortableContext kaldırıldı */}
                             {categoryGroups.map(group => (<SidebarGroup key={group.id} group={group} categoryId={data.id} />))}

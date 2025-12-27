@@ -46,7 +46,7 @@ const Sidebar = ({ position = 'left', mode = 'fixed' }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const sidebarSettings = appSettings.sidebar || {};
-  const collapsedWidth = sidebarSettings.collapsedWidth || 60;
+  const collapsedWidth = sidebarSettings.collapsedWidth || 80;
   const behavior = sidebarSettings.behavior || 'always-visible';
   const isMiniMode = mode === 'mini';
 

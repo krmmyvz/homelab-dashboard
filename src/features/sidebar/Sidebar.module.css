@@ -53,7 +53,7 @@
 }
 
 .sidebarContainer[data-mode="mini"] {
-  width: 60px !important;
+  width: 80px !important;
 }
 
 .sidebarContainer[data-mode="compact"] .sidebar {

@@ -164,3 +164,102 @@
     transform: rotate(360deg);
   }
 }
+
+/* ==========================================
+   NAVIGATION RAIL (Combined Mini/Collapsed)
+   M3 Spec: 80dp width, Vertical Layout, Pill Indicator
+   ========================================== */
+
+:global(.is-collapsed) .sidebarButton {
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  /* Space between icon and label */
+  height: auto;
+  min-height: 56px;
+  /* Icon (32) + Gap (4) + Label (Top/Bottom Spacing) */
+  padding: 12px 0 16px 0;
+  /* Top padding increased for visual balance with pill */
+  text-align: center;
+  background: transparent !important;
+  /* Reset background */
+}
+
+/* Button Content in Rail Mode */
+:global(.is-collapsed) .buttonContent {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* M3 Active Indicator (Pill) */
+:global(.is-collapsed) .sidebarButton::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  /* Anchor to top padding */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  /* M3 Spec: 56dp */
+  height: 32px;
+  /* M3 Spec: 32dp */
+  border-radius: 16px;
+  /* Pill shape */
+  background: var(--color-secondary-container);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short),
+    background-color var(--motion-duration-short);
+  z-index: 0;
+}
+
+/* Active State in Rail */
+:global(.is-collapsed) .sidebarButton.active::before {
+  opacity: 1;
+}
+
+:global(.is-collapsed) .sidebarButton:hover::before {
+  background: var(--color-on-surface);
+  /* Hover state layer */
+  opacity: 0.08;
+}
+
+:global(.is-collapsed) .sidebarButton.active:hover::before {
+  background: var(--color-on-secondary-container);
+  /* Darken active pill */
+  opacity: 0.12;
+  /* Combined opacity */
+}
+
+/* Icon Styling in Rail */
+:global(.is-collapsed) .buttonContent svg {
+  z-index: 1;
+  /* Above pill */
+  position: relative;
+  margin-bottom: 0;
+}
+
+/* Label Styling in Rail */
+:global(.is-collapsed) .buttonContent span {
+  font-size: 11px;
+  /* M3 Label Small */
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  z-index: 1;
+  color: var(--color-on-surface-variant);
+  opacity: 1;
+  /* Ensure visible */
+  display: block;
+  /* Show label */
+}
+
+/* Active Label Color */
+:global(.is-collapsed) .sidebarButton.active .buttonContent span {
+  color: var(--color-on-surface);
+  font-weight: 700;
+}
