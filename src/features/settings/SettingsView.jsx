@@ -58,7 +58,7 @@ const SettingsView = ({ searchValue, activeGroup }) => {
       if (connectionStatus === 'error' || saveError) {
         setHasError(true);
         setErrorMessage(saveError || 'Ayarlar kaydedilirken bir hata oluştu. Lütfen tekrar deneyin.');
-        addNotification('Ayarlar kaydedilemedi', 'error');
+        // Notification removed to avoid spam
       } else {
         setHasError(false);
         setErrorMessage('');
@@ -114,17 +114,18 @@ const SettingsView = ({ searchValue, activeGroup }) => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
-            <ErrorMessage
-              message={errorMessage}
-              size="large"
-              className={styles.settingsError}
-            />
-            <SettingsActionButton
-              title="Tekrar Dene"
-              onClick={handleRetry}
-              variant="secondary"
-              ariaLabel="Ayarları tekrar kaydetmeyi dene"
-            />
+            <div className={styles.errorMessage}>
+              <div className={styles.errorText}>
+                {errorMessage}
+              </div>
+              <button
+                onClick={handleRetry}
+                className={styles.wallpaperActionButton}
+                style={{ minHeight: '32px', padding: '4px 12px', fontSize: '13px', backgroundColor: 'var(--color-surface)', border: 'none', marginLeft: 'auto' }}
+              >
+                Tekrar Dene
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
