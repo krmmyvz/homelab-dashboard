@@ -1,0 +1,36 @@
+.indicatorContainer {
+    width: 120px; /* Sabit bir genişlik vererek layout kaymalarını önlüyoruz */
+    height: 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--typography-labelMedium-fontSize);
+    font-weight: 500;
+}
+
+.indicator.saving {
+    color: var(--color-on-surface-variant);
+}
+
+.indicator.saved {
+    color: var(--color-tertiary);
+}
+
+.loaderIcon {
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

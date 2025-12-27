@@ -1,0 +1,53 @@
+{
+  "name": "Homelab Dashboard",
+  "short_name": "Homelab",
+  "description": "Modern homelab server monitoring dashboard with Material Design 3",
+  "theme_color": "#6750a4",
+  "background_color": "#1a1b23",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "start_url": "/",
+  "id": "homelab-dashboard",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/mobile.png", 
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Servers",
+      "short_name": "Servers",
+      "description": "View all servers",
+      "url": "/?view=servers",
+      "icons": [{ "src": "/vite.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Settings",
+      "short_name": "Settings", 
+      "description": "App settings",
+      "url": "/?view=settings",
+      "icons": [{ "src": "/vite.svg", "sizes": "96x96" }]
+    }
+  ],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
+}

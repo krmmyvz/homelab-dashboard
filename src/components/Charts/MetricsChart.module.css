@@ -1,0 +1,231 @@
+.container {
+  position: relative;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--shape-corner-lg);
+  box-shadow: var(--elevation-1);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-5) 0;
+  border-bottom: 1px solid var(--color-surface-variant);
+  margin-bottom: var(--spacing-4);
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+}
+
+.select {
+  padding: var(--spacing-1) var(--spacing-3);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--shape-corner-sm);
+  background: var(--color-surface);
+  font-size: var(--typography-bodyLarge-fontSize);
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: border-color var(--motion-duration-short);
+}
+
+.select:hover {
+  border-color: var(--color-outline-variant);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-container);
+}
+
+.stats {
+  display: flex;
+  gap: var(--spacing-5);
+  align-items: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.statLabel {
+  font-size: var(--typography-labelSmall-fontSize);
+  color: var(--color-on-surface-variant);
+  font-weight: var(--typography-labelMedium-fontWeight);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-size: var(--typography-bodyLarge-fontSize);
+  color: var(--color-on-surface);
+  font-weight: var(--typography-titleMedium-fontWeight);
+}
+
+.chartContainer {
+  padding: 0 var(--spacing-5) var(--spacing-5);
+  position: relative;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-12) var(--spacing-5);
+  color: var(--color-on-surface-variant);
+  font-size: var(--typography-bodyLarge-fontSize);
+}
+
+.spinner {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  border: 2px solid var(--color-outline-variant);
+  border-top: 2px solid var(--color-primary);
+  border-radius: var(--shape-corner-full);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12) var(--spacing-5);
+  color: var(--color-error);
+  font-size: var(--typography-bodyLarge-fontSize);
+  background: var(--color-error-container);
+  border-radius: var(--shape-corner-sm);
+  margin: var(--spacing-5);
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.tooltipContent {
+  background: var(--color-inverse-surface);
+  color: var(--color-inverse-on-surface);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--shape-corner-lg);
+  font-size: var(--typography-bodyMedium-fontSize);
+  box-shadow: var(--elevation-3);
+  backdrop-filter: blur(4px);
+  min-width: 120px;
+}
+
+.tooltipMetric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-1);
+}
+
+.tooltipLabel {
+  font-weight: var(--typography-labelLarge-fontWeight);
+  opacity: 0.9;
+}
+
+.tooltipValue {
+  font-weight: var(--typography-titleMedium-fontWeight);
+  color: var(--color-primary);
+}
+
+.tooltipTime {
+  font-size: var(--typography-labelSmall-fontSize);
+  opacity: 0.8;
+  text-align: center;
+  border-top: 1px solid var(--color-overlay-medium);
+  padding-top: var(--spacing-1);
+}
+
+/* Responsive design */
+@media (max-width: var(--breakpoint-md)) {
+  .header {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    align-items: stretch;
+  }
+  
+  .stats {
+    justify-content: space-around;
+    gap: var(--spacing-3);
+  }
+  
+  .stat {
+    flex: 1;
+  }
+  
+  .statLabel {
+    font-size: var(--typography-labelSmall-fontSize);
+  }
+  
+  .statValue {
+    font-size: var(--typography-bodyMedium-fontSize);
+  }
+  
+  .chartContainer {
+    padding: 0 var(--spacing-3) var(--spacing-3);
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .stats {
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+  }
+  
+  .stat {
+    min-width: 60px;
+  }
+  
+  .tooltipContent {
+    font-size: var(--typography-bodySmall-fontSize);
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+}
+
+/* Dark theme support - Artık theme token'ları otomatik handle ediyor */
+@media (prefers-color-scheme: dark) {
+  /* CSS değişkenleri zaten tema bazlı, ekstra override'a gerek yok */
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .container {
+    border-width: 2px;
+  }
+  
+  .select {
+    border-width: 2px;
+  }
+  
+  .statValue {
+    font-weight: var(--typography-headlineSmall-fontWeight);
+  }
+}

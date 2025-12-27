@@ -1,0 +1,552 @@
+{
+  "servers": [
+    {
+      "id": "srv-1763828835063-ak7h8sqd6",
+      "name": "Proxmox VE",
+      "url": "https://192.168.1.2:8006/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835063-8b5s27olz",
+      "name": "Nginx Proxy Manager",
+      "url": "http://192.168.1.4:81/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835063-oy4c5qh5q",
+      "name": "Technitium DNS Server",
+      "url": "http://192.168.1.100:5380/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835063-5w6na8765",
+      "name": "Webmin",
+      "url": "http://192.168.1.8:10000/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835063-riyvzyprb",
+      "name": "Portainer",
+      "url": "https://192.168.1.12:9443/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-9e3dj6rve",
+      "name": "Dockge (ARR Suite)",
+      "url": "http://192.168.1.7:5001/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-g04sjdjfz",
+      "name": "Dockge (Other Services)",
+      "url": "http://192.168.1.123:5001/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-i81tb1v58",
+      "name": "Authentik (SSO)",
+      "url": "https://auth.internal/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-m2i2mpve6",
+      "name": "Jellyfin",
+      "url": "http://192.168.1.11:8096/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-c1y9rytvv",
+      "name": "Navidrome",
+      "url": "http://192.168.1.10:4533/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-ur2iuncic",
+      "name": "qBittorrent",
+      "url": "http://192.168.1.6:8090/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-nk77gx75s",
+      "name": "Picard (Music Tagger)",
+      "url": "http://192.168.1.12:5800/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-5c7jmldkc",
+      "name": "Sonarr (TV Shows)",
+      "url": "http://192.168.1.7:8989/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835064-5r7zmvjs9",
+      "name": "Radarr (Movies)",
+      "url": "http://192.168.1.7:7878/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-yslaqsrfl",
+      "name": "Lidarr (Music)",
+      "url": "http://192.168.1.7:8686/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-0ddhbm4fd",
+      "name": "Prowlarr (Indexers)",
+      "url": "http://192.168.1.7:9696/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-t00s4fee3",
+      "name": "Bazarr (Subtitles)",
+      "url": "http://192.168.1.7:6767/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-u4q26xrq2",
+      "name": "Jellyseerr (Requests)",
+      "url": "http://192.168.1.7:5055/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-uc7yoy82x",
+      "name": "Flaresolverr",
+      "url": "http://192.168.1.7:8191/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-jxrt3ivwq",
+      "name": "Nextcloud",
+      "url": "http://192.168.1.9:443/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-bvm6o40m0",
+      "name": "Vaultwarden (Passwords)",
+      "url": "https://vaultwarden.internal/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-kprkd5n6e",
+      "name": "PiVPN (WireGuard)",
+      "url": "http://192.168.1.3/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-zjv0nnd7x",
+      "name": "DNS Management",
+      "url": "https://dns.internal/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-xgvn3ul14",
+      "name": "OvenMediaEngine (RTMP)",
+      "url": "http://192.168.1.12:1935/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-jfrhl0kre",
+      "name": "OvenMediaEngine (WebRTC)",
+      "url": "http://192.168.1.12:3333/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-a2s8pxdn9",
+      "name": "LibreSpeed (Speed Test)",
+      "url": "http://192.168.1.123:8080/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835065-cgihx6ozq",
+      "name": "OpenSpeedTest",
+      "url": "http://192.168.1.123:3000/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-1lvumlhb6",
+      "name": "Courier Telegram Bot",
+      "url": "http://192.168.1.12:8081/",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-osog8d58u",
+      "name": "Windows 11 Lite (RDP)",
+      "url": "rdp://192.168.1.x:3389",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-7f262ybca",
+      "name": "\\\\192.168.1.8\\Media",
+      "url": "smb://192.168.1.8/Media",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-tukwlwcz4",
+      "name": "\\\\192.168.1.8\\Proxmox",
+      "url": "smb://192.168.1.8/Proxmox",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-91tosjkiw",
+      "name": "\\\\192.168.1.8\\Nextcloud",
+      "url": "smb://192.168.1.8/Nextcloud",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-khyfwabnj",
+      "name": "\\\\192.168.1.8\\Docker",
+      "url": "smb://192.168.1.8/Docker",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-8itkh35dm",
+      "name": "\\\\192.168.1.8\\NextcloudData",
+      "url": "smb://192.168.1.8/NextcloudData",
+      "category_id": "cat-1763828835060-nv1930mhd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-12qjgub4j",
+      "name": "Proxmox VE",
+      "url": "https://192.168.1.2:8006/",
+      "category_id": "cat-1763828835066-0j7wtwazu",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-i7p6yjpkj",
+      "name": "Nginx Proxy Manager",
+      "url": "http://192.168.1.4:81/",
+      "category_id": "cat-1763828835066-0j7wtwazu",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835066-n15mtxa07",
+      "name": "Technitium DNS Server",
+      "url": "http://192.168.1.100:5380/",
+      "category_id": "cat-1763828835066-0j7wtwazu",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-j9c7085z5",
+      "name": "Webmin",
+      "url": "http://192.168.1.8:10000/",
+      "category_id": "cat-1763828835066-0j7wtwazu",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-bg6h6v4pq",
+      "name": "Portainer",
+      "url": "https://192.168.1.12:9443/",
+      "category_id": "cat-1763828835066-0j7wtwazu",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-ml29yzycn",
+      "name": "Dockge (ARR Suite)",
+      "url": "http://192.168.1.7:5001/",
+      "category_id": "cat-1763828835066-0j7wtwazu",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-tkkv5jqy6",
+      "name": "Dockge (Other Services)",
+      "url": "http://192.168.1.123:5001/",
+      "category_id": "cat-1763828835066-0j7wtwazu",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-wdealyykn",
+      "name": "Authentik (SSO)",
+      "url": "https://auth.internal/",
+      "category_id": "cat-1763828835066-0j7wtwazu",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-tjbl4drry",
+      "name": "Jellyfin",
+      "url": "http://192.168.1.11:8096/",
+      "category_id": "cat-1763828835067-4gl15xh3w",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-1fn31hk6p",
+      "name": "Navidrome",
+      "url": "http://192.168.1.10:4533/",
+      "category_id": "cat-1763828835067-4gl15xh3w",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-q2jkrsrtq",
+      "name": "qBittorrent",
+      "url": "http://192.168.1.6:8090/",
+      "category_id": "cat-1763828835067-4gl15xh3w",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835067-w515c26d4",
+      "name": "Picard (Music Tagger)",
+      "url": "http://192.168.1.12:5800/",
+      "category_id": "cat-1763828835067-4gl15xh3w",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-6n2w7ljqb",
+      "name": "Sonarr (TV Shows)",
+      "url": "http://192.168.1.7:8989/",
+      "category_id": "cat-1763828835067-gxqd3bs38",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-cpkz9sj4f",
+      "name": "Radarr (Movies)",
+      "url": "http://192.168.1.7:7878/",
+      "category_id": "cat-1763828835067-gxqd3bs38",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-xdd2l2ndp",
+      "name": "Lidarr (Music)",
+      "url": "http://192.168.1.7:8686/",
+      "category_id": "cat-1763828835067-gxqd3bs38",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-ngjdarvwb",
+      "name": "Prowlarr (Indexers)",
+      "url": "http://192.168.1.7:9696/",
+      "category_id": "cat-1763828835067-gxqd3bs38",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-upiiobolw",
+      "name": "Bazarr (Subtitles)",
+      "url": "http://192.168.1.7:6767/",
+      "category_id": "cat-1763828835067-gxqd3bs38",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-r8sdsl55g",
+      "name": "Jellyseerr (Requests)",
+      "url": "http://192.168.1.7:5055/",
+      "category_id": "cat-1763828835067-gxqd3bs38",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-mnyq9j379",
+      "name": "Flaresolverr",
+      "url": "http://192.168.1.7:8191/",
+      "category_id": "cat-1763828835067-gxqd3bs38",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-by9t3n8ay",
+      "name": "Nextcloud",
+      "url": "http://192.168.1.9:443/",
+      "category_id": "cat-1763828835068-82bmn61sd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-vssmahpxo",
+      "name": "Vaultwarden (Passwords)",
+      "url": "https://vaultwarden.internal/",
+      "category_id": "cat-1763828835068-82bmn61sd",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-jbnu625fl",
+      "name": "PiVPN (WireGuard)",
+      "url": "http://192.168.1.3/",
+      "category_id": "cat-1763828835068-323sveau9",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-4vcgggdal",
+      "name": "DNS Management",
+      "url": "https://dns.internal/",
+      "category_id": "cat-1763828835068-323sveau9",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-945uvv504",
+      "name": "OvenMediaEngine (RTMP)",
+      "url": "http://192.168.1.12:1935/",
+      "category_id": "cat-1763828835068-rvl827dvb",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835068-bw2hkd7d8",
+      "name": "OvenMediaEngine (WebRTC)",
+      "url": "http://192.168.1.12:3333/",
+      "category_id": "cat-1763828835068-rvl827dvb",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-3hez4npyt",
+      "name": "LibreSpeed (Speed Test)",
+      "url": "http://192.168.1.123:8080/",
+      "category_id": "cat-1763828835068-ahfnzce6x",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-5u3s7ofrl",
+      "name": "OpenSpeedTest",
+      "url": "http://192.168.1.123:3000/",
+      "category_id": "cat-1763828835068-ahfnzce6x",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-1iw8adxtp",
+      "name": "Courier Telegram Bot",
+      "url": "http://192.168.1.12:8081/",
+      "category_id": "cat-1763828835068-ahfnzce6x",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-umk2mpstf",
+      "name": "Windows 11 Lite (RDP)",
+      "url": "rdp://192.168.1.x:3389",
+      "category_id": "cat-1763828835069-5lbpvxbhg",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-1edfo4wzk",
+      "name": "\\\\192.168.1.8\\Media",
+      "url": "smb://192.168.1.8/Media",
+      "category_id": "cat-1763828835069-vpf5gzlm4",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-qenrvelcy",
+      "name": "\\\\192.168.1.8\\Proxmox",
+      "url": "smb://192.168.1.8/Proxmox",
+      "category_id": "cat-1763828835069-vpf5gzlm4",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-gmow2sr38",
+      "name": "\\\\192.168.1.8\\Nextcloud",
+      "url": "smb://192.168.1.8/Nextcloud",
+      "category_id": "cat-1763828835069-vpf5gzlm4",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-kmjua612r",
+      "name": "\\\\192.168.1.8\\Docker",
+      "url": "smb://192.168.1.8/Docker",
+      "category_id": "cat-1763828835069-vpf5gzlm4",
+      "status": "pending"
+    },
+    {
+      "id": "srv-1763828835069-hsvtpvxek",
+      "name": "\\\\192.168.1.8\\NextcloudData",
+      "url": "smb://192.168.1.8/NextcloudData",
+      "category_id": "cat-1763828835069-vpf5gzlm4",
+      "status": "pending"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-1763828835060-nv1930mhd",
+      "name": "🏠 Homelab Services",
+      "title": "🏠 Homelab Services",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835066-0j7wtwazu",
+      "name": "🔧 Infrastructure & Management",
+      "title": "🔧 Infrastructure & Management",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835067-4gl15xh3w",
+      "name": "🎬 Media Services",
+      "title": "🎬 Media Services",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835067-gxqd3bs38",
+      "name": "📦 Media Automation (ARR Suite)",
+      "title": "📦 Media Automation (ARR Suite)",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835068-82bmn61sd",
+      "name": "☁️ Cloud & Storage",
+      "title": "☁️ Cloud & Storage",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835068-323sveau9",
+      "name": "🔒 Security & Network",
+      "title": "🔒 Security & Network",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835068-rvl827dvb",
+      "name": "🎥 Streaming & Media Tools",
+      "title": "🎥 Streaming & Media Tools",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835068-ahfnzce6x",
+      "name": "📊 Monitoring & Tools",
+      "title": "📊 Monitoring & Tools",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835069-5lbpvxbhg",
+      "name": "🖥️ Virtual Machines",
+      "title": "🖥️ Virtual Machines",
+      "icon": "Folder",
+      "layout": []
+    },
+    {
+      "id": "cat-1763828835069-vpf5gzlm4",
+      "name": "💾 File Shares (SMB)",
+      "title": "💾 File Shares (SMB)",
+      "icon": "Folder",
+      "layout": []
+    }
+  ]
+}

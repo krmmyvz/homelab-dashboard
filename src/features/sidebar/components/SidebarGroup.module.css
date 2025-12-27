@@ -1,0 +1,182 @@
+/* --- src/features/sidebar/components/SidebarGroup.module.css --- */
+
+.groupItemWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  gap: var(--spacing-1);
+}
+
+/* Flyout panel içindeki gruplar için add menu stili */
+.groupItemWrapper.inFlyout {
+  display: block;
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.groupItemWrapper.inFlyout:last-child {
+  border-bottom: none;
+}
+
+.groupItemWrapper.inFlyout button {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--spacing-3, 12px) var(--spacing-4, 16px);
+  border-radius: 0;
+  justify-content: flex-start;
+  background: transparent;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+}
+
+.groupItemWrapper.inFlyout button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-on-surface);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+}
+
+.groupItemWrapper.inFlyout button:hover {
+  background-color: var(--color-surface-variant);
+}
+
+.groupItemWrapper.inFlyout button:hover::before {
+  opacity: 0.08;
+}
+
+.groupItemWrapper.inFlyout button:active::before {
+  opacity: 0.12;
+}
+
+.groupItemWrapper.inFlyout .groupButtonText {
+  font-size: var(--typography-bodyMedium-fontSize, 14px);
+  color: var(--color-on-surface);
+  font-weight: 400;
+  z-index: 1;
+  position: relative;
+}
+
+.groupButtonText {
+  font-size: var(--typography-bodyMedium-fontSize, 14px);
+  line-height: var(--typography-bodyMedium-lineHeight, 1.5);
+  font-weight: 400;
+  color: var(--color-on-surface-variant);
+  transition: color var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.groupButtonControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2, 8px);
+  flex-shrink: 0;
+}
+
+.serverCountBadge {
+  font-size: var(--typography-labelSmall-fontSize, 11px);
+  font-weight: var(--typography-labelMedium-fontWeight, 500);
+  line-height: var(--typography-labelSmall-lineHeight, 1.5);
+  padding: var(--spacing-1) var(--spacing-2, 8px);
+  border-radius: var(--shape-corner-full, 9999px);
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface-variant);
+  transition: all var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+}
+
+/* Drag handle - hidden by default */
+.dragHandle {
+  background: transparent;
+  border: none;
+  cursor: grab;
+  color: var(--color-on-surface-variant);
+  padding: var(--spacing-2, 8px);
+  border-radius: var(--shape-corner-full, 9999px);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.groupItemWrapper:hover .dragHandle {
+  opacity: 0.6;
+}
+
+.dragHandle:hover {
+  opacity: 1;
+  background-color: var(--color-surface-variant);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+/* === ACCESSIBILITY IMPROVEMENTS === */
+/* Enhanced focus indicators */
+.groupItemWrapper button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* === TOUCH TARGET OPTIMIZATION === */
+/* Enhanced touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .groupItemWrapper button {
+    min-height: 48px;
+  }
+}
+
+/* === ERROR HANDLING & LOADING STATES === */
+/* Error message */
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2, 8px);
+  padding: var(--spacing-2, 8px);
+  background: var(--color-error-container);
+  color: var(--color-on-error-container);
+  border-radius: var(--shape-corner-md, 12px);
+  font-size: var(--typography-bodySmall-fontSize, 12px);
+  border: 1px solid var(--color-error);
+  margin-top: var(--spacing-1, 4px);
+}
+
+/* Retry button for error messages */
+.retryButton {
+  margin-left: var(--spacing-2, 8px);
+  padding: var(--spacing-1) var(--spacing-2, 8px);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--shape-corner-sm, 8px);
+  font-size: var(--typography-labelSmall-fontSize, 11px);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--motion-duration-short, 150ms) var(--motion-easing-standard, ease);
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.retryButton:hover {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.retryButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

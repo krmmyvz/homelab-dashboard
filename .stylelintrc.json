@@ -1,0 +1,58 @@
+{
+    "extends": [
+        "stylelint-config-standard"
+    ],
+    "rules": {
+        "color-no-hex": true,
+        "function-disallowed-list": [
+            "rgb",
+            "rgba",
+            "hsl",
+            "hsla"
+        ],
+        "selector-class-pattern": null,
+        "custom-property-pattern": null,
+        "keyframes-name-pattern": null,
+        "comment-empty-line-before": null,
+        "no-descending-specificity": null,
+        "no-duplicate-selectors": null,
+        "selector-not-notation": null,
+        "color-function-notation": null,
+        "color-function-alias-notation": null,
+        "alpha-value-notation": null,
+        "value-keyword-case": null,
+        "font-family-name-quotes": null,
+        "media-feature-range-notation": null,
+        "property-no-deprecated": null,
+        "rule-empty-line-before": null,
+        "property-no-vendor-prefix": null,
+        "value-no-vendor-prefix": null,
+        "media-query-no-invalid": null,
+        "media-feature-name-value-no-unknown": null,
+        "declaration-block-no-redundant-longhand-properties": null,
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": [
+                    "global"
+                ]
+            }
+        ],
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "tailwind",
+                    "apply",
+                    "layer",
+                    "config"
+                ]
+            }
+        ]
+    },
+    "ignoreFiles": [
+        "node_modules/**",
+        "dist/**",
+        "build/**"
+    ]
+}

@@ -1,0 +1,406 @@
+/* ==========================================
+   ENHANCED SERVER WIDGET CARD
+   Material Design 3 Expressive with proper tokens
+   ========================================== */
+
+.widget {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* Glass Morphism: Background with opacity, text opaque */
+  background: color-mix(in srgb, var(--color-surface-container-low) calc(var(--card-opacity, 100) * 1%), transparent);
+  border-radius: var(--shape-corner-xl);
+  padding: var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  /* M3 Expressive: No shadow for resting state */
+  box-shadow: none;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--motion-duration-long) var(--motion-easing-expressive);
+  /* Glass Texture */
+  backdrop-filter: blur(var(--card-blur, 0));
+  -webkit-backdrop-filter: blur(var(--card-blur, 0));
+}
+
+.widget:hover {
+  background: color-mix(in srgb, var(--color-surface-container-high) calc(var(--card-opacity, 100) * 1%), transparent);
+  box-shadow: var(--elevation-1);
+  /* Subtle lift only on hover */
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.editMode {
+  cursor: grab;
+}
+
+.editMode:active {
+  cursor: grabbing;
+}
+
+/* ==========================================
+   HEADER SECTION - Icon, Status, Favorite
+   ========================================== */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  gap: var(--spacing-2);
+  z-index: 1;
+}
+
+.iconContainer {
+  width: calc(var(--spacing-10) + var(--spacing-1));
+  height: calc(var(--spacing-10) + var(--spacing-1));
+  border-radius: var(--shape-corner-lg);
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--elevation-1);
+  transition: all var(--motion-duration-short) var(--motion-easing-emphasized);
+  position: relative;
+}
+
+.widget:hover .iconContainer {
+  transform: scale(1.05);
+  box-shadow: var(--elevation-2);
+}
+
+/* Favorite Badge - Icon Top Left Corner */
+.favoriteBadge {
+  position: absolute;
+  top: calc(var(--spacing-1) * -0.5);
+  left: calc(var(--spacing-1) * -0.5);
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+  border-radius: var(--shape-corner-full);
+  background: linear-gradient(135deg, var(--color-warning), var(--color-warning-dark));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--elevation-2);
+  z-index: 2;
+  border: 2px solid var(--color-surface);
+}
+
+.responseTimeBadge {
+  position: absolute;
+  top: var(--spacing-2);
+  right: calc(var(--spacing-2) + var(--spacing-6) + var(--spacing-1));
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: calc(var(--spacing-1) * 0.5) var(--spacing-2);
+  background: var(--color-surface-container-highest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--shape-corner-full);
+  font-family: var(--typography-labelSmall-fontFamily);
+  font-size: var(--typography-labelSmall-fontSize);
+  font-weight: var(--typography-labelSmall-fontWeight);
+  color: var(--color-on-surface);
+  box-shadow: var(--elevation-1);
+  z-index: 10;
+  height: var(--spacing-5);
+}
+
+.responseTimeBadge svg {
+  color: var(--color-on-surface-variant);
+  flex-shrink: 0;
+}
+
+.statusIndicator {
+  position: absolute;
+  top: var(--spacing-2);
+  right: var(--spacing-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--shape-corner-full);
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline-variant);
+  transition: all var(--motion-duration-medium) var(--motion-easing-expressive);
+  box-shadow: var(--elevation-1);
+  z-index: 10;
+  font-family: var(--typography-labelSmall-fontFamily);
+  font-size: var(--typography-labelSmall-fontSize);
+  font-weight: var(--typography-labelSmall-fontWeight);
+  color: var(--color-on-surface);
+  height: var(--spacing-5);
+}
+
+/* Dynamic colors for badge */
+.statusOnline {
+  background: color-mix(in srgb, var(--status-online) 15%, transparent);
+  color: var(--status-online);
+  border-color: color-mix(in srgb, var(--status-online) 30%, transparent);
+  /* Static subtle glow - no animation for better performance */
+  box-shadow: 0 0 6px color-mix(in srgb, var(--status-online) 25%, transparent);
+}
+
+.statusOffline {
+  background: color-mix(in srgb, var(--status-offline) 15%, transparent);
+  color: var(--status-offline);
+  border-color: color-mix(in srgb, var(--status-offline) 30%, transparent);
+}
+
+.statusPending {
+  background: color-mix(in srgb, var(--status-pending) 15%, transparent);
+  color: var(--status-pending);
+  border-color: color-mix(in srgb, var(--status-pending) 30%, transparent);
+  /* Static indicator - no animation */
+}
+
+.statusUnknown {
+  background: var(--color-surface-variant);
+  color: var(--color-on-surface-variant);
+}
+
+/* Animation removed - expressive-pulse was too resource intensive
+   Status indicators now use static styling for better performance */
+
+/* ==========================================
+   CONTENT SECTION - Title, Description
+   ========================================== */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+.title {
+  font-family: var(--typography-titleMedium-fontFamily);
+  font-size: var(--typography-titleMedium-fontSize);
+  font-weight: var(--typography-titleMedium-fontWeight);
+  line-height: var(--typography-titleMedium-lineHeight);
+  letter-spacing: var(--typography-titleMedium-letterSpacing);
+  color: var(--color-on-surface);
+  margin: 0 0 var(--spacing-1) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  font-family: var(--typography-bodySmall-fontFamily);
+  font-size: var(--typography-bodySmall-fontSize);
+  font-weight: var(--typography-bodySmall-fontWeight);
+  line-height: var(--typography-bodySmall-lineHeight);
+  letter-spacing: var(--typography-bodySmall-letterSpacing);
+  color: var(--color-on-surface-variant);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.url {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--typography-labelSmall-fontSize);
+  font-weight: var(--typography-labelSmall-fontWeight);
+  color: var(--color-primary);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+/* ==========================================
+   TAGS SECTION - Animated from bottom to top
+   ========================================== */
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-1);
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.widget:hover .tagsContainer {
+  opacity: 1;
+}
+
+.tag {
+  font-family: var(--typography-labelSmall-fontFamily);
+  font-size: var(--typography-labelSmall-fontSize);
+  font-weight: var(--typography-labelSmall-fontWeight);
+  padding: calc(var(--spacing-1) * 0.5) var(--spacing-2);
+  border-radius: var(--shape-corner-sm);
+  background: var(--color-surface-container-highest);
+  color: var(--color-on-surface-variant);
+  white-space: nowrap;
+  border: 1px solid var(--color-outline-variant);
+  line-height: 1.2;
+}
+
+/* ==========================================
+   EDIT MODE ACTIONS
+   ========================================== */
+
+.actions {
+  position: absolute;
+  bottom: var(--spacing-2);
+  right: var(--spacing-2);
+  display: flex;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  background: var(--color-tooltip-bg);
+  backdrop-filter: blur(12px);
+  border-radius: var(--shape-corner-md);
+  z-index: 10;
+  box-shadow: var(--elevation-2);
+}
+
+.actionBtn {
+  width: var(--spacing-9);
+  /* 48px minimum for touch targets */
+  height: var(--spacing-9);
+  border-radius: var(--shape-corner-sm);
+  border: none;
+  background: var(--color-overlay-light);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--motion-duration-short) var(--motion-easing-emphasized);
+  padding: 0;
+}
+
+.actionBtn:hover {
+  background: var(--color-overlay-medium);
+  transform: scale(1.08);
+}
+
+.actionBtn:active {
+  transform: scale(0.92);
+}
+
+.actionBtn.favorite {
+  background: var(--color-warning-bg-light);
+  color: var(--color-warning);
+}
+
+.actionBtn.favorite:hover {
+  background: var(--color-warning-bg);
+}
+
+.actionBtn.delete {
+  background: var(--color-error-bg-light);
+  color: var(--color-error);
+}
+
+.actionBtn.delete:hover {
+  background: var(--color-error-bg);
+}
+
+/* ==========================================
+   STATUS GLOW EFFECT - REMOVED
+   ========================================== */
+
+/* ==========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================== */
+
+@media (max-width: 480px) {
+  .widget {
+    padding: var(--spacing-3);
+    gap: var(--spacing-2);
+    border-radius: var(--shape-corner-lg);
+  }
+
+  .iconContainer {
+    width: var(--spacing-9);
+    height: var(--spacing-9);
+  }
+
+  .title {
+    font-family: var(--typography-titleSmall-fontFamily);
+    font-size: var(--typography-titleSmall-fontSize);
+  }
+
+  .description {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+  }
+
+  .responseTimeBadge {
+    padding: calc(var(--spacing-1) * 0.5) var(--spacing-1);
+    font-size: var(--typography-labelSmall-fontSize);
+  }
+
+  /* Mobile touch targets - minimum 48px */
+  .actionBtn {
+    width: var(--spacing-9);
+    height: var(--spacing-9);
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY & PREFERENCES
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .widget,
+  .actionBtn,
+  .tagsContainer,
+  .tag,
+  .iconContainer {
+    transition: none;
+    animation: none;
+  }
+
+  .widget:hover {
+    transform: none;
+  }
+
+  .statusOnline,
+  .statusPending {
+    animation: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .widget {
+    background: var(--color-surface);
+    border-color: var(--color-outline-variant);
+  }
+
+  .iconContainer {
+    box-shadow: 0 2px 8px var(--color-scrim-light);
+  }
+}
+
+@media (prefers-contrast: high) {
+  .widget {
+    border: 2px solid var(--color-outline);
+    background: var(--color-surface);
+  }
+
+  .statusIndicator,
+  .favoriteBadge {
+    border-width: 3px;
+  }
+}

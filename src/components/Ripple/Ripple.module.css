@@ -1,0 +1,50 @@
+/* --- src/components/Ripple/Ripple.module.css --- */
+/* MD3 Ripple Effect Styles */
+
+.rippleContainer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 0;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.24;
+    transform: scale(0);
+    animation: ripple-expand var(--motion-duration-long) var(--motion-easing-standard) forwards;
+    pointer-events: none;
+}
+
+@keyframes ripple-expand {
+    0% {
+        transform: scale(0);
+        opacity: 0.24;
+    }
+    50% {
+        opacity: 0.12;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .ripple {
+        animation: ripple-fade var(--motion-duration-short) ease-out forwards;
+    }
+
+    @keyframes ripple-fade {
+        0% {
+            opacity: 0.24;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}

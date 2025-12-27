@@ -1,0 +1,257 @@
+/* --- src/components/CustomTextInput/CustomTextInput.module.css --- */
+/* MD3 Compliant Text Field Styles */
+
+.inputContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: border-color var(--motion-duration-medium),
+        box-shadow var(--motion-duration-medium),
+        background-color var(--motion-duration-medium);
+}
+
+/* ============================================
+   MD3 FILLED VARIANT (Default)
+   ============================================ */
+.filled {
+    background-color: var(--color-surface-container-highest);
+    border-radius: var(--shape-corner-xs) var(--shape-corner-xs) 0 0;
+    border-bottom: 1px solid var(--color-on-surface-variant);
+}
+
+.filled:hover:not(.disabled):not(.focused) {
+    background-color: var(--color-surface-container-high);
+}
+
+.filled.focused {
+    border-bottom: 2px solid var(--color-primary);
+    background-color: var(--color-surface-container-highest);
+}
+
+.filled.error {
+    border-bottom-color: var(--color-error);
+}
+
+.filled.error.focused {
+    border-bottom: 2px solid var(--color-error);
+}
+
+/* ============================================
+   MD3 OUTLINED VARIANT
+   ============================================ */
+.outlined {
+    background-color: transparent;
+    border: 1px solid var(--color-outline);
+    border-radius: var(--shape-corner-xs);
+}
+
+.outlined:hover:not(.disabled):not(.focused) {
+    border-color: var(--color-on-surface);
+}
+
+.outlined.focused {
+    border: 2px solid var(--color-primary);
+}
+
+.outlined.error {
+    border-color: var(--color-error);
+}
+
+.outlined.error.focused {
+    border: 2px solid var(--color-error);
+}
+
+/* ============================================
+   COMMON STATES
+   ============================================ */
+.disabled {
+    opacity: 0.38;
+    background-color: var(--color-surface-variant);
+    pointer-events: none;
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+.label {
+    position: absolute;
+    left: var(--spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--typography-bodyLarge-fontSize);
+    color: var(--color-on-surface-variant);
+    pointer-events: none;
+    transform-origin: left center;
+    z-index: 1;
+}
+
+.hasLeadingIcon .label {
+    left: calc(var(--spacing-4) + 24px + var(--spacing-2));
+}
+
+.required {
+    color: var(--color-error);
+    margin-left: var(--spacing-1);
+}
+
+/* ============================================
+   INPUT
+   ============================================ */
+.input {
+    width: 100%;
+    height: 56px;
+    padding: var(--spacing-6) var(--spacing-4) var(--spacing-2);
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--color-on-surface);
+    font-size: var(--typography-bodyLarge-fontSize);
+    caret-color: var(--color-primary);
+}
+
+.hasLeadingIcon .input {
+    padding-left: calc(var(--spacing-4) + 24px + var(--spacing-2));
+}
+
+.hasTrailingIcon .input {
+    padding-right: calc(var(--spacing-4) + 24px + var(--spacing-2));
+}
+
+.input:disabled {
+    cursor: not-allowed;
+    color: var(--color-on-surface);
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputError {
+    caret-color: var(--color-error);
+}
+
+/* ============================================
+   ICONS
+   ============================================ */
+.leadingIcon,
+.trailingIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--color-on-surface-variant);
+    flex-shrink: 0;
+}
+
+.leadingIcon {
+    position: absolute;
+    left: var(--spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.trailingIcon {
+    position: absolute;
+    right: var(--spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.focused .leadingIcon,
+.focused .trailingIcon {
+    color: var(--color-primary);
+}
+
+.error .leadingIcon,
+.error .trailingIcon {
+    color: var(--color-error);
+}
+
+/* ============================================
+   PREFIX & SUFFIX
+   ============================================ */
+.prefix,
+.suffix {
+    font-size: var(--typography-bodyLarge-fontSize);
+    color: var(--color-on-surface-variant);
+    line-height: 1;
+}
+
+.prefix {
+    position: absolute;
+    left: var(--spacing-4);
+    bottom: 12px;
+}
+
+.hasLeadingIcon .prefix {
+    left: calc(var(--spacing-4) + 24px + var(--spacing-2));
+}
+
+.suffix {
+    position: absolute;
+    right: var(--spacing-4);
+    bottom: 12px;
+}
+
+.hasTrailingIcon .suffix {
+    right: calc(var(--spacing-4) + 24px + var(--spacing-2));
+}
+
+/* ============================================
+   SUPPORTING TEXT ROW
+   ============================================ */
+.supportingRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-1) var(--spacing-4) 0;
+    min-height: 20px;
+}
+
+.errorMessage {
+    font-size: var(--typography-bodySmall-fontSize);
+    color: var(--color-error);
+    flex: 1;
+}
+
+.helperText {
+    font-size: var(--typography-bodySmall-fontSize);
+    color: var(--color-on-surface-variant);
+    flex: 1;
+}
+
+.counter {
+    font-size: var(--typography-bodySmall-fontSize);
+    color: var(--color-on-surface-variant);
+    margin-left: auto;
+}
+
+.counterMax {
+    color: var(--color-error);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+@media (prefers-contrast: high) {
+
+    .filled,
+    .outlined {
+        border-width: 2px;
+    }
+
+    .focused {
+        border-width: 3px !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .inputContainer,
+    .input {
+        transition: none;
+    }
+}

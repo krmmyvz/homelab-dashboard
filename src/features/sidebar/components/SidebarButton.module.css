@@ -1,0 +1,160 @@
+/* --- src/features/sidebar/components/SidebarButton.module.css --- */
+/* Reusable Sidebar Button Component Styles */
+
+.sidebarButton {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: transparent;
+  border: none;
+  border-radius: var(--shape-corner-full);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--motion-duration-short) var(--motion-easing-standard);
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+  min-height: 48px;
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+/* State layers for Material Design 3 */
+.sidebarButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--shape-corner-full);
+  background: var(--color-on-surface);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.sidebarButton:hover {
+  background: var(--color-surface-variant);
+}
+
+.sidebarButton:hover::before {
+  opacity: 0.08;
+}
+
+.sidebarButton:active::before {
+  opacity: 0.12;
+}
+
+/* Focus indicators */
+.sidebarButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Button content wrapper */
+.buttonContent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-3);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0;
+}
+
+/* Variants */
+/* .default - uses default styling above */
+
+.category .buttonContent {
+  padding: 0;
+}
+
+.group .buttonContent {
+  padding: 0;
+}
+
+.action .buttonContent {
+  padding: 0;
+}
+
+/* Sizes */
+.small {
+  min-height: 40px;
+  padding: var(--spacing-2);
+  font-size: var(--typography-bodySmall-fontSize);
+}
+
+.medium {
+  min-height: 48px;
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--typography-bodyMedium-fontSize);
+}
+
+.large {
+  min-height: 52px;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--typography-bodyLarge-fontSize);
+}
+
+/* States */
+.active {
+  background: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+.active::before {
+  background: var(--color-on-secondary-container);
+}
+
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.error {
+  border: 1px solid var(--color-error);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading indicator */
+.loadingIndicator {
+  position: absolute;
+  top: 50%;
+  right: var(--spacing-3);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-primary);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Touch target optimization */
+@media (hover: none) and (pointer: coarse) {
+  .sidebarButton {
+    min-height: 48px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: calc(var(--breakpoint-md) - 1px)) {
+  .sidebarButton {
+    min-height: 48px;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

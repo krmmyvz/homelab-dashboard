@@ -1,0 +1,152 @@
+.container {
+  position: relative;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--shape-corner-lg);
+  padding: var(--spacing-4);
+  box-shadow: var(--elevation-1);
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8) var(--spacing-5);
+  color: var(--color-on-surface-variant);
+  font-size: var(--typography-bodyLarge-fontSize);
+}
+
+.spinner {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  border: 2px solid var(--color-outline-variant);
+  border-top: 2px solid var(--color-primary);
+  border-radius: var(--shape-corner-full);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-5);
+  color: var(--color-error);
+  font-size: var(--typography-bodyLarge-fontSize);
+  background: var(--color-error-container);
+  border-radius: var(--shape-corner-sm);
+}
+
+.noData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-5);
+  color: var(--color-on-surface-variant);
+  font-size: var(--typography-bodyLarge-fontSize);
+  background: var(--color-surface-variant);
+  border-radius: var(--shape-corner-sm);
+}
+
+.legend {
+  display: flex;
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-4);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--color-outline-variant);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.legendColor {
+  width: var(--spacing-3);
+  height: var(--spacing-3);
+  border-radius: var(--shape-corner-xs);
+}
+
+.legendLabel {
+  font-size: var(--typography-bodySmall-fontSize);
+  color: var(--color-on-surface);
+  font-weight: var(--typography-labelLarge-fontWeight);
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.tooltipContent {
+  background: var(--color-inverse-surface);
+  color: var(--color-inverse-on-surface);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--shape-corner-sm);
+  font-size: var(--typography-bodySmall-fontSize);
+  box-shadow: var(--elevation-3);
+  backdrop-filter: blur(4px);
+}
+
+.tooltipStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-weight: var(--typography-titleSmall-fontWeight);
+  margin-bottom: var(--spacing-1);
+}
+
+.tooltipStatusIndicator {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-radius: var(--shape-corner-full);
+}
+
+.tooltipTime {
+  font-size: var(--typography-labelSmall-fontSize);
+  opacity: 0.8;
+  margin-bottom: var(--spacing-1);
+}
+
+.tooltipResponse {
+  font-size: var(--typography-labelSmall-fontSize);
+  opacity: 0.8;
+}
+
+/* Responsive design */
+@media (max-width: var(--breakpoint-md)) {
+  .container {
+    padding: var(--spacing-3);
+  }
+  
+  .legend {
+    flex-wrap: wrap;
+    gap: var(--spacing-3);
+  }
+  
+  .legendLabel {
+    font-size: var(--typography-labelSmall-fontSize);
+  }
+}
+
+/* Dark theme - Token'lar otomatik handle ediyor */
+@media (prefers-color-scheme: dark) {
+  /* CSS değişkenleri zaten tema bazlı */
+}

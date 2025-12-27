@@ -1,0 +1,449 @@
+.container {
+  padding: var(--spacing-5);
+  background: var(--color-surface-container-lowest);
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-6);
+  background: var(--color-surface);
+  padding: var(--spacing-5);
+  border-radius: var(--shape-corner-xl);
+  box-shadow: var(--elevation-1);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.title {
+  font-size: var(--typography-headlineMedium-fontSize);
+  font-weight: var(--typography-headlineMedium-fontWeight);
+  color: var(--color-on-surface);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.connectedIndicator {
+  font-size: var(--typography-labelSmall-fontSize);
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--color-tertiary-container);
+  color: var(--color-on-tertiary-container);
+  border-radius: var(--shape-corner-full);
+  font-weight: var(--typography-labelMedium-fontWeight);
+}
+
+.lastUpdate {
+  font-size: var(--typography-bodyLarge-fontSize);
+  color: var(--color-on-surface-variant);
+}
+
+.headerControls {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.select {
+  padding: var(--spacing-2) var(--spacing-3);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--shape-corner-sm);
+  background: var(--color-surface);
+  font-size: var(--typography-bodyLarge-fontSize);
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: border-color var(--motion-duration-short);
+  min-width: 120px;
+}
+
+.select:hover {
+  border-color: var(--color-outline-variant);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-container);
+}
+
+.refreshButton {
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--shape-corner-sm);
+  font-size: var(--typography-labelLarge-fontSize);
+  font-weight: var(--typography-labelLarge-fontWeight);
+  cursor: pointer;
+  transition: background-color var(--motion-duration-short);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.refreshButton:hover:not(:disabled) {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.refreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-12) var(--spacing-5);
+  color: var(--color-on-surface-variant);
+  font-size: var(--typography-titleMedium-fontSize);
+}
+
+.spinner {
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  border: 3px solid var(--color-outline-variant);
+  border-top: 3px solid var(--color-primary);
+  border-radius: var(--shape-corner-full);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  text-align: center;
+  padding: var(--spacing-12) var(--spacing-5);
+  background: var(--color-surface);
+  border-radius: var(--shape-corner-xl);
+  box-shadow: var(--elevation-1);
+}
+
+.error h3 {
+  color: var(--color-error);
+  margin-bottom: var(--spacing-3);
+}
+
+.error p {
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--spacing-5);
+}
+
+.retryButton {
+  padding: var(--spacing-2) var(--spacing-5);
+  background: var(--color-error);
+  color: var(--color-on-error);
+  border: none;
+  border-radius: var(--shape-corner-sm);
+  font-weight: var(--typography-labelLarge-fontWeight);
+  cursor: pointer;
+  transition: background-color var(--motion-duration-short);
+}
+
+.retryButton:hover {
+  background: var(--color-error-container);
+  color: var(--color-on-error-container);
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-6);
+}
+
+.overviewCard {
+  background: var(--color-surface);
+  border-radius: var(--shape-corner-xl);
+  box-shadow: var(--elevation-1);
+  overflow: hidden;
+}
+
+.cardHeader {
+  padding: var(--spacing-4) var(--spacing-5);
+  border-bottom: 1px solid var(--color-outline-variant);
+  background: var(--color-surface-container-lowest);
+}
+
+.cardHeader h3 {
+  margin: 0;
+  font-size: var(--typography-titleMedium-fontSize);
+  font-weight: var(--typography-titleMedium-fontWeight);
+  color: var(--color-on-surface);
+}
+
+.cardContent {
+  padding: var(--spacing-5);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: var(--typography-headlineSmall-fontSize);
+  font-weight: var(--typography-headlineSmall-fontWeight);
+  color: var(--color-on-surface);
+  line-height: 1;
+  margin-bottom: var(--spacing-1);
+}
+
+.statLabel {
+  font-size: var(--typography-labelSmall-fontSize);
+  color: var(--color-on-surface-variant);
+  font-weight: var(--typography-labelMedium-fontWeight);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.healthBar {
+  position: relative;
+  height: var(--spacing-2);
+  background: var(--color-surface-variant);
+  border-radius: var(--shape-corner-sm);
+  overflow: hidden;
+  margin-top: var(--spacing-3);
+}
+
+.healthProgress {
+  height: 100%;
+  transition: width var(--motion-duration-long) var(--motion-easing-standard);
+  border-radius: var(--shape-corner-sm);
+}
+
+.healthText {
+  position: absolute;
+  top: calc(var(--spacing-6) * -1);
+  right: 0;
+  font-size: var(--typography-bodySmall-fontSize);
+  font-weight: var(--typography-titleSmall-fontWeight);
+  color: var(--color-on-surface);
+}
+
+.alertsList {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.alertItem {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.alertItem:last-child {
+  border-bottom: none;
+}
+
+.alertSeverity {
+  width: var(--spacing-1);
+  border-radius: var(--shape-corner-xs);
+  flex-shrink: 0;
+}
+
+.alertContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.alertMessage {
+  font-size: var(--typography-bodyLarge-fontSize);
+  color: var(--color-on-surface);
+  margin-bottom: var(--spacing-1);
+  word-wrap: break-word;
+}
+
+.alertTime {
+  font-size: var(--typography-bodySmall-fontSize);
+  color: var(--color-on-surface-variant);
+}
+
+.alertsMore {
+  text-align: center;
+  padding: var(--spacing-2);
+  font-size: var(--typography-bodySmall-fontSize);
+  color: var(--color-on-surface-variant);
+  font-style: italic;
+}
+
+.noAlerts {
+  text-align: center;
+  color: var(--color-tertiary);
+  font-size: var(--typography-bodyLarge-fontSize);
+  padding: var(--spacing-5);
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-6);
+}
+
+.chartCard {
+  background: var(--color-surface);
+  border-radius: var(--shape-corner-xl);
+  box-shadow: var(--elevation-1);
+  overflow: hidden;
+}
+
+.noServerSelected {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--spacing-12) var(--spacing-5);
+  background: var(--color-surface);
+  border-radius: var(--shape-corner-xl);
+  box-shadow: var(--elevation-1);
+}
+
+.noServerSelected h3 {
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--spacing-3);
+}
+
+.noServerSelected p {
+  color: var(--color-outline);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.systemHealth {
+  background: var(--color-surface);
+  border-radius: var(--shape-corner-xl);
+  box-shadow: var(--elevation-1);
+  padding: var(--spacing-5);
+}
+
+.systemHealth h3 {
+  margin: 0 0 var(--spacing-4) 0;
+  font-size: var(--typography-titleMedium-fontSize);
+  font-weight: var(--typography-titleMedium-fontWeight);
+  color: var(--color-on-surface);
+}
+
+.healthGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.healthItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3);
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--shape-corner-sm);
+}
+
+.healthLabel {
+  font-size: var(--typography-bodyLarge-fontSize);
+  color: var(--color-on-surface-variant);
+  font-weight: var(--typography-labelLarge-fontWeight);
+}
+
+.healthValue {
+  font-size: var(--typography-bodyLarge-fontSize);
+  color: var(--color-on-surface);
+  font-weight: var(--typography-titleMedium-fontWeight);
+}
+
+/* Responsive design */
+@media (max-width: var(--breakpoint-xl)) {
+  .overviewGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .healthGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .container {
+    padding: var(--spacing-3);
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: var(--spacing-4);
+    align-items: stretch;
+  }
+  
+  .headerControls {
+    justify-content: stretch;
+  }
+  
+  .select,
+  .refreshButton {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .healthGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .title {
+    font-size: var(--typography-headlineSmall-fontSize);
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .headerControls {
+    flex-direction: column;
+  }
+  
+  .select,
+  .refreshButton {
+    width: 100%;
+  }
+  
+  .statNumber {
+    font-size: var(--typography-titleLarge-fontSize);
+  }
+  
+  .statLabel {
+    font-size: var(--typography-labelSmall-fontSize);
+  }
+}
+
+/* Dark theme - Token'lar otomatik handle ediyor */
+@media (prefers-color-scheme: dark) {
+  /* CSS değişkenleri zaten tema bazlı, ekstra override'a gerek yok */
+}

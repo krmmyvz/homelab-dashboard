@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "composite": false,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "strict": true
+  },
+  // "include" kaldırıldı, sadece TypeScript dosyaları ana tsconfig.json ile kontrol edilecek
+}

@@ -1,0 +1,194 @@
+/* ==========================================
+   ADVANCED WIDGET GRID SYSTEM
+   Material Design 3 with proper tokens
+   Optimized for drag-drop stability
+   ========================================== */
+
+.widgetGrid {
+  display: grid;
+  gap: var(--spacing-4);
+  padding: 0;
+  width: 100%;
+  align-content: start;
+  transition: gap var(--motion-duration-medium) var(--motion-easing-emphasized);
+  /* Prevent layout jumps during drag */
+  will-change: auto;
+  contain: layout;
+}
+
+/* Grid Density Variants - Using explicit column counts for stability */
+.gridCompact {
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 160px;
+  gap: var(--spacing-4);
+  padding: 0;
+}
+
+.gridMedium {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 180px;
+  gap: var(--spacing-6);
+  padding: 0;
+}
+
+.gridSpacious {
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 200px;
+  gap: var(--spacing-8);
+  padding: 0;
+}
+
+/* Custom grid with dynamic columns (set via inline style) */
+.gridCustom {
+  /* Columns set by inline style */
+  grid-auto-rows: 180px;
+  /* Default medium height */
+  gap: var(--spacing-4);
+  padding: 0;
+}
+
+/* Card Size Variants - Applied dynamically */
+.widgetGrid[data-card-size="small"] {
+  grid-auto-rows: 140px !important;
+}
+
+.widgetGrid[data-card-size="small"] .gridCompact {
+  grid-auto-rows: 140px;
+}
+
+.widgetGrid[data-card-size="small"] .gridMedium {
+  grid-auto-rows: 150px;
+}
+
+.widgetGrid[data-card-size="small"] .gridSpacious {
+  grid-auto-rows: 160px;
+}
+
+/* Medium size uses default heights from base classes */
+
+.widgetGrid[data-card-size="large"] {
+  grid-auto-rows: 220px !important;
+}
+
+.widgetGrid[data-card-size="large"] .gridCompact {
+  grid-auto-rows: 220px;
+}
+
+.widgetGrid[data-card-size="large"] .gridMedium {
+  grid-auto-rows: 230px;
+}
+
+.widgetGrid[data-card-size="large"] .gridSpacious {
+  grid-auto-rows: 240px;
+}
+
+/* Responsive Adjustments - Explicit columns for stable drag-drop */
+@media (max-width: 480px) {
+  .widgetGrid {
+    padding: 0;
+    gap: var(--spacing-3);
+  }
+
+  .gridCompact,
+  .gridMedium,
+  .gridSpacious {
+    grid-template-columns: 1fr;
+    /* Tek sütun - flex değil grid */
+    grid-auto-rows: 160px;
+    gap: var(--spacing-3);
+    padding: 0;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .gridCompact {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 150px;
+    /* Increased */
+    gap: var(--spacing-2);
+  }
+
+  .gridMedium {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 170px;
+    /* Increased */
+    gap: var(--spacing-3);
+  }
+
+  .gridSpacious {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 190px;
+    /* Increased */
+    gap: var(--spacing-4);
+  }
+}
+
+@media (min-width: 1200px) {
+  .gridCompact {
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 155px;
+    /* Increased */
+    gap: var(--spacing-3);
+  }
+
+  .gridMedium {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 175px;
+    /* Increased */
+    gap: var(--spacing-4);
+  }
+
+  .gridSpacious {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 195px;
+    /* Increased */
+    gap: var(--spacing-5);
+  }
+}
+
+@media (min-width: 1600px) {
+  .gridCompact {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 160px;
+    /* Increased */
+    gap: var(--spacing-4);
+  }
+
+  .gridMedium {
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 180px;
+    /* Increased */
+    gap: var(--spacing-5);
+  }
+
+  .gridSpacious {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    /* Increased */
+    gap: var(--spacing-6);
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .widgetGrid {
+    background: linear-gradient(135deg, var(--color-scrim) 0%, var(--color-scrim) 100%);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .widgetGrid {
+    transition: none;
+  }
+}
+
+/* Drag-drop optimization classes */
+.widgetGrid:has(.isDragging) {
+  /* Stabilize grid during drag operations */
+  pointer-events: none;
+}
+
+.widgetGrid:has(.isDragging)>* {
+  pointer-events: auto;
+}

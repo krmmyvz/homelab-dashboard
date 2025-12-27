@@ -1,0 +1,150 @@
+/* Settings Sheet Styles */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-scrim);
+  z-index: var(--zIndex-z-sheet-backdrop, 1000);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.sheet {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 600px;
+  max-width: 90vw;
+  background: var(--color-surface);
+  box-shadow: var(--elevation-5);
+  display: flex;
+  flex-direction: column;
+  z-index: var(--zIndex-z-sheet, 1001);
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+/* Dropdown'ların sheet üstünde görünmesi için */
+.sheet :global(.selectContainer) {
+  z-index: var(--zIndex-z-sheet-dropdown, 1002);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-6) var(--spacing-6);
+  border-bottom: 1px solid var(--color-outline-variant);
+  background-color: var(--color-surface-variant);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--typography-headlineSmall-fontSize);
+  font-weight: var(--typography-headlineSmall-fontWeight);
+  line-height: var(--typography-headlineSmall-lineHeight);
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  /* Touch target */
+  min-height: 48px;
+  /* Touch target */
+  border: none;
+  background-color: transparent;
+  color: var(--color-on-surface-variant);
+  border-radius: var(--shape-corner-full);
+  cursor: pointer;
+  transition: background-color var(--motion-duration-short) var(--motion-easing-standard),
+    color var(--motion-duration-short) var(--motion-easing-standard),
+    transform var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.closeButton:hover {
+  background-color: var(--color-surface-container-highest);
+  color: var(--color-on-surface);
+  transform: scale(1.05);
+}
+
+.closeButton:active {
+  background-color: var(--color-outline-variant);
+  transform: scale(0.95);
+}
+
+.closeButton:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-outline-variant) transparent;
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: var(--color-outline-variant);
+  border-radius: var(--shape-corner-full);
+  border: 2px solid var(--color-surface);
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-outline);
+}
+
+/* Responsive */
+@media (max-width: var(--breakpoint-md)) {
+  .sheet {
+    width: 100vw;
+  }
+
+  .header {
+    padding: var(--spacing-5) var(--spacing-5);
+  }
+
+  .content {
+    padding: 0;
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .header {
+    padding: var(--spacing-4) var(--spacing-4);
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  .title {
+    font-size: var(--typography-titleLarge-fontSize);
+  }
+}
+
+/* Smooth scroll behavior */
+@media (prefers-reduced-motion: no-preference) {
+  .content {
+    scroll-behavior: smooth;
+  }
+}

@@ -1,0 +1,189 @@
+/* --- src/components/CustomSelect/CustomSelect.module.css (ACCESSIBILITY ENHANCED) --- */
+
+.selectContainer {
+    position: relative;
+    width: 100%;
+}
+
+.selectLabel {
+    display: block;
+    margin-bottom: var(--spacing-1);
+    font-size: var(--typography-bodyMedium-fontSize);
+    font-weight: 500;
+    color: var(--color-on-surface);
+}
+
+.required {
+    color: var(--color-error);
+    margin-left: var(--spacing-1);
+}
+
+.selectButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-2);
+    width: 100%;
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--shape-corner-md);
+    color: var(--color-on-surface);
+    cursor: pointer;
+    transition: border-color var(--motion-duration-medium),
+        box-shadow var(--motion-duration-medium),
+        background-color var(--motion-duration-medium);
+}
+
+/* MD3 Outlined Variant (Default) */
+.selectButton.outlined {
+    background-color: transparent;
+    border: 1px solid var(--color-outline);
+}
+
+.selectButton.outlined:hover:not(:disabled) {
+    border-color: var(--color-on-surface);
+}
+
+.selectButton.outlined:focus-visible {
+    border: 2px solid var(--color-primary);
+    box-shadow: none;
+}
+
+/* MD3 Filled Variant */
+.selectButton.filled {
+    background-color: var(--color-surface-container-highest);
+    border: none;
+    border-bottom: 1px solid var(--color-on-surface-variant);
+    border-radius: var(--shape-corner-xs) var(--shape-corner-xs) 0 0;
+}
+
+.selectButton.filled:hover:not(:disabled) {
+    background-color: var(--color-surface-container-high);
+}
+
+.selectButton.filled:focus-visible {
+    border-bottom: 2px solid var(--color-primary);
+    box-shadow: none;
+}
+
+.selectButton:focus-visible {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.selectButton.error {
+    border-color: var(--color-error);
+}
+
+.selectButton.error:focus-visible {
+    border-color: var(--color-error);
+}
+
+.selectButton:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+    background-color: var(--color-surface-variant);
+}
+
+/* Leading Icon */
+.leadingIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-on-surface-variant);
+    flex-shrink: 0;
+}
+
+.hasLeadingIcon .selectedValue {
+    margin-left: var(--spacing-1);
+}
+
+.selectedValue {
+    flex: 1;
+    text-align: left;
+    font-size: var(--typography-bodyLarge-fontSize);
+    color: var(--color-on-surface);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.errorMessage {
+    margin-top: var(--spacing-1);
+    font-size: var(--typography-bodySmall-fontSize);
+    color: var(--color-error);
+}
+
+.optionsList {
+    position: fixed;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    list-style: none;
+    padding: var(--spacing-2);
+    margin: 0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+    border-radius: var(--shape-corner-lg);
+    box-shadow: var(--elevation-3);
+    z-index: var(--zIndex-z-dropdown);
+
+    /* Tema uyumlu scrollbar stilleri */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-surface-variant);
+}
+
+.optionsList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.optionsList::-webkit-scrollbar-track {
+    background: var(--color-surface-variant);
+    border-radius: var(--shape-corner-full);
+}
+
+.optionsList::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: var(--shape-corner-full);
+    border: 2px solid var(--color-surface);
+}
+
+.optionsList::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-tertiary);
+}
+
+.optionItem {
+    padding: var(--spacing-3);
+    border-radius: var(--shape-corner-md);
+    cursor: pointer;
+    font-size: var(--typography-bodyLarge-fontSize);
+    color: var(--color-on-surface);
+    transition: background-color var(--motion-duration-short);
+    white-space: nowrap;
+}
+
+.optionItem:hover,
+.optionItem.focused {
+    background-color: var(--color-surface-variant);
+}
+
+.optionItem.selected {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-primary-container);
+    font-weight: 500;
+}
+
+.optionItem.focused.selected {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .selectButton {
+        border-width: 2px;
+    }
+
+    .selectButton:focus-visible {
+        box-shadow: 0 0 0 3px var(--color-primary);
+    }
+}

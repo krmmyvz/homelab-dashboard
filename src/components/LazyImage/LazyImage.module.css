@@ -1,0 +1,94 @@
+/* --- src/components/LazyImage/LazyImage.module.css --- */
+
+.lazyImageContainer {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter var(--motion-duration-medium) ease-out;
+}
+
+.imageBlur {
+  filter: blur(5px);
+}
+
+.placeholder,
+.errorState {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface-variant);
+}
+
+.loadingSkeleton {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: var(--color-surface-variant);
+  overflow: hidden;
+}
+
+.pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      color-mix(in srgb, var(--color-on-surface-variant) 10%, transparent),
+      transparent);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.errorPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-on-surface-variant);
+  text-align: center;
+}
+
+.errorIcon {
+  font-size: var(--typography-displaySmall-fontSize);
+  opacity: 0.6;
+}
+
+.errorText {
+  font-size: var(--typography-bodySmall-fontSize);
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .errorIcon {
+    font-size: var(--typography-headlineMedium-fontSize);
+  }
+
+  .errorText {
+    font-size: var(--typography-labelSmall-fontSize);
+  }
+}

@@ -1,0 +1,96 @@
+.patternSelector {
+  width: 100%;
+}
+
+.patternGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.patternButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--motion-duration-short2) var(--motion-easing-standard);
+}
+
+.patternButton.selected .patternPreview {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.patternPreview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--shape-corner-medium);
+  border: 2px solid var(--color-outline);
+  overflow: hidden;
+  background: var(--color-surface);
+  transition: all var(--motion-duration-short2) var(--motion-easing-standard);
+}
+
+.patternButton:hover .patternPreview {
+  border-color: var(--color-primary);
+  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
+}
+
+.patternBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.selectedIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--elevation-2);
+  z-index: 1;
+}
+
+.patternName {
+  font-size: var(--font-size-label-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-on-surface);
+  text-align: center;
+}
+
+.patternButton.selected .patternName {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .patternGrid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: var(--spacing-sm);
+  }
+  
+  .patternName {
+    font-size: var(--font-size-label-xsmall);
+  }
+  
+  .selectedIndicator {
+    width: 28px;
+    height: 28px;
+  }
+}

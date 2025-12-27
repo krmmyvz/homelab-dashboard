@@ -1,0 +1,198 @@
+.toastContainer {
+  position: fixed;
+  z-index: var(--zIndex-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  max-width: 420px;
+  pointer-events: none;
+}
+
+/* Pozisyon varyantları */
+.toastContainer[data-position="top-right"] {
+  top: var(--spacing-6);
+  right: var(--spacing-6);
+}
+
+.toastContainer[data-position="top-left"] {
+  top: var(--spacing-6);
+  left: var(--spacing-6);
+}
+
+.toastContainer[data-position="bottom-right"] {
+  bottom: var(--spacing-6);
+  right: var(--spacing-6);
+}
+
+.toastContainer[data-position="bottom-left"] {
+  bottom: var(--spacing-6);
+  left: var(--spacing-6);
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border-radius: var(--shape-corner-lg);
+  box-shadow: var(--elevation-3);
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface);
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Type-specific colored accent strip */
+.toast::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: currentColor;
+}
+
+.toast.success {
+  color: var(--color-tertiary);
+}
+
+.toast.error {
+  color: var(--color-error);
+}
+
+.toast.warning {
+  color: var(--color-warning);
+}
+
+.toast.info {
+  color: var(--color-primary);
+}
+
+.toast.loading {
+  color: var(--color-primary);
+}
+
+.toastIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: currentColor;
+}
+
+.toastContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
+.toastMessage {
+  font-size: var(--typography-bodyLarge-fontSize);
+  font-weight: var(--typography-bodyLarge-fontWeight);
+  line-height: var(--typography-bodyLarge-lineHeight);
+  color: var(--color-on-surface);
+}
+
+.toastActionButton {
+  align-self: flex-start;
+  padding: var(--spacing-2) var(--spacing-4);
+  border: none;
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+  border-radius: var(--shape-corner-full);
+  font-size: var(--typography-labelLarge-fontSize);
+  font-weight: var(--typography-labelLarge-fontWeight);
+  cursor: pointer;
+  transition: background-color var(--motion-duration-short),
+    box-shadow var(--motion-duration-short);
+}
+
+.toastActionButton:hover {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--elevation-1);
+}
+
+.toastActionButton:active {
+  box-shadow: none;
+}
+
+.toastCloseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-on-surface-variant);
+  border-radius: var(--shape-corner-full);
+  cursor: pointer;
+  transition: background-color var(--motion-duration-short);
+  flex-shrink: 0;
+}
+
+.toastCloseButton:hover {
+  background-color: var(--color-surface);
+}
+
+.toastCloseButton:active {
+  background-color: var(--color-outline-variant);
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--color-outline-variant);
+}
+
+.progressFill {
+  height: 100%;
+  background-color: currentColor;
+  transition: width var(--motion-duration-short1) linear;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .toastContainer {
+    max-width: none;
+  }
+
+  .toastContainer[data-position="top-right"],
+  .toastContainer[data-position="top-left"] {
+    top: var(--spacing-4);
+    left: var(--spacing-4);
+    right: var(--spacing-4);
+  }
+
+  .toastContainer[data-position="bottom-right"],
+  .toastContainer[data-position="bottom-left"] {
+    bottom: var(--spacing-4);
+    left: var(--spacing-4);
+    right: var(--spacing-4);
+  }
+
+  .toast {
+    padding: var(--spacing-3);
+    gap: var(--spacing-3);
+  }
+}

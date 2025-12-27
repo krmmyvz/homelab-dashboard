@@ -1,0 +1,101 @@
+/* ==========================================
+   ENHANCED WIDGET CONTAINER
+   Material Design 3 with proper tokens
+   ========================================== */
+
+.widgetWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity;
+  cursor: grab;
+  border-radius: var(--shape-corner-lg);
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.widgetWrapper:active {
+  cursor: grabbing;
+}
+
+.widgetContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Size variants for future extensibility */
+.size2x1 {
+  grid-column: span 2;
+}
+
+.size1x2 {
+  grid-row: span 2;
+}
+
+.size2x2 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Glow effect overlay */
+.glowEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    var(--color-state-layer-primary-light) 0%,
+    var(--color-state-layer-primary-dim) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* Hover state enhancements */
+.widgetWrapper:hover {
+  filter: drop-shadow(0 var(--spacing-2) var(--spacing-4) var(--color-overlay-dark));
+}
+
+.widgetWrapper:hover .glowEffect {
+  background: radial-gradient(
+    circle at center,
+    var(--color-state-layer-primary-medium) 0%,
+    color-mix(in srgb, var(--color-primary) 10%, transparent) 50%,
+    transparent 100%
+  );
+}
+
+/* Dragging state */
+.widgetWrapper[data-is-dragging="true"] {
+  filter: drop-shadow(0 var(--spacing-3) var(--spacing-6) var(--color-shadow-light));
+  transform: rotate(2deg);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .widgetWrapper {
+    transition: none;
+  }
+
+  .glowEffect {
+    display: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .glowEffect {
+    display: none;
+  }
+
+  .widgetWrapper:hover {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}

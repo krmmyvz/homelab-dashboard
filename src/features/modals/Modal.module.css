@@ -1,0 +1,336 @@
+/* --- src/features/modals/Modal.module.css --- */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-scrim);
+  backdrop-filter: blur(4px);
+  z-index: var(--zIndex-z-modal-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  background-color: var(--color-surface);
+  border-radius: var(--shape-corner-xl);
+  box-shadow: var(--elevation-3);
+  width: 100%;
+  max-width: 90vw;
+  margin: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - (var(--spacing-4) * 2));
+  animation: scaleIn var(--motion-duration-medium) var(--motion-easing-standard);
+  will-change: transform, opacity;
+}
+
+@media (min-width: 768px) {
+  .modalContent {
+    max-width: 500px;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-5);
+  border-bottom: 1px solid var(--color-outline-variant);
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  font-size: var(--typography-headlineSmall-fontSize);
+  font-weight: var(--typography-headlineSmall-fontWeight);
+  color: var(--color-on-surface);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-on-surface-variant);
+  border-radius: var(--shape-corner-full);
+  cursor: pointer;
+  transition: background-color var(--motion-duration-medium), color var(--motion-duration-medium);
+}
+
+.closeButton:hover {
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface);
+}
+
+.modalBody {
+  padding: var(--spacing-5);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.modalDescription {
+  font-size: var(--typography-bodyMedium-fontSize);
+  color: var(--color-on-surface-variant);
+  text-align: center;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-5);
+  border-top: 1px solid var(--color-outline-variant);
+  flex-shrink: 0;
+}
+
+/* Form Elemanları */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.formGroup label {
+  font-size: var(--typography-titleSmall-fontSize);
+  font-weight: var(--typography-titleSmall-fontWeight);
+  color: var(--color-on-surface-variant);
+}
+
+/* YENİ: İki sütunlu yerleşim için */
+.formRow {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.formRow>.formGroup {
+  flex: 1;
+  /* Alanı eşit paylaşmalarını sağlar */
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: var(--spacing-3);
+  border-radius: var(--shape-corner-md);
+  border: 1px solid var(--color-outline);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  font-size: var(--typography-bodyLarge-fontSize);
+  transition: all var(--motion-duration-medium);
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+/* Error states */
+.inputError {
+  border-color: var(--color-error) !important;
+  background-color: var(--color-error-container);
+}
+
+.inputError:focus {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-error) 30%, transparent) !important;
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-error);
+  font-size: var(--typography-bodySmall-fontSize);
+  margin-top: var(--spacing-1);
+  padding: var(--spacing-2);
+  background-color: var(--color-error-container);
+  border-radius: var(--shape-corner-sm);
+  border-left: 3px solid var(--color-error);
+}
+
+/* Butonlar */
+.button {
+  padding: var(--spacing-2) var(--spacing-6);
+  border-radius: var(--shape-corner-full);
+  border: 1px solid var(--color-outline);
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: var(--typography-labelLarge-fontSize);
+  font-weight: var(--typography-labelLarge-fontWeight);
+  cursor: pointer;
+  transition: all var(--motion-duration-medium);
+}
+
+.button:hover {
+  background-color: var(--color-surface-variant);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface-variant);
+}
+
+.button.primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}
+
+.button.primary:hover:not(:disabled) {
+  filter: brightness(0.9);
+}
+
+.button.primary:disabled {
+  background-color: var(--color-surface-variant);
+  border-color: var(--color-outline);
+}
+
+.button.danger {
+  background-color: var(--color-error);
+  color: var(--color-on-error);
+  border-color: var(--color-error);
+}
+
+.button.text {
+  border: none;
+  margin-right: auto;
+}
+
+/* Etiket Giriş Alanı */
+.tagInputContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  border-radius: var(--shape-corner-md);
+  border: 1px solid var(--color-outline);
+  background-color: var(--color-surface);
+  transition: all var(--motion-duration-medium);
+}
+
+.tagInputContainer:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.tagInput {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  padding: var(--spacing-1);
+  outline: none;
+  min-width: 120px;
+  color: var(--color-on-surface);
+}
+
+.tagPill {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--shape-corner-sm);
+  font-size: var(--typography-labelLarge-fontSize);
+  font-weight: 500;
+}
+
+.tagPill button {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-on-secondary-container);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tagPill button:hover {
+  background-color: color-mix(in srgb, var(--color-on-secondary-container) 20%, transparent);
+}
+
+/* Confirm Modal */
+.confirmModal {
+  max-width: 90vw;
+}
+
+@media (min-width: 768px) {
+  .confirmModal {
+    max-width: 400px;
+  }
+}
+
+.confirmModalBody {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+.confirmIconWrapper {
+  color: var(--color-error);
+}
+
+.confirmTextContent p {
+  color: var(--color-on-surface-variant);
+}
+
+/* Tags Modal */
+.tagsModal {
+  max-width: 90vw;
+}
+
+@media (min-width: 768px) {
+  .tagsModal {
+    max-width: 600px;
+  }
+}
+
+.tagsModalContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  justify-content: center;
+}
+
+.tagFilterButton {
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: var(--shape-corner-full);
+  border: 1px solid var(--color-outline);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: all var(--motion-duration-medium);
+  font-size: var(--typography-titleMedium-fontSize);
+  padding: var(--spacing-2) var(--spacing-4);
+}
+
+.tagFilterButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.tagFilterButton.active {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}

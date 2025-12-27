@@ -1,0 +1,398 @@
+/* --- 2. src/features/sidebar/components/SidebarCategory.module.css --- */
+/* Nihai ortalama ve fly-out panel stilleri */
+
+.itemWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.itemButton {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--shape-corner-full);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.itemButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--shape-corner-full);
+  background-color: var(--color-on-surface);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.itemButton:hover {
+  background-color: var(--color-surface-variant);
+}
+
+.itemButton:hover::before {
+  opacity: 0.08;
+}
+
+.itemButton:active::before {
+  opacity: 0.12;
+}
+
+.itemButton.selected {
+  background-color: var(--color-secondary-container);
+}
+
+.itemButton.selected:hover::before {
+  background-color: var(--color-on-secondary-container);
+  opacity: 0.12;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+  gap: var(--spacing-3);
+  z-index: 1;
+  min-width: 0;
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--color-on-surface-variant);
+  transition: color var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.title {
+  white-space: nowrap;
+  color: var(--color-on-surface);
+  font-size: var(--typography-bodyLarge-fontSize);
+  font-weight: var(--typography-bodyLarge-fontWeight);
+  line-height: var(--typography-bodyLarge-lineHeight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.itemButton.selected .iconWrapper,
+.itemButton.selected .title,
+.itemButton.selected .chevron {
+  color: var(--color-on-secondary-container);
+}
+
+.itemButton.selected .title {
+  font-weight: 600;
+}
+
+.chevron {
+  color: var(--color-on-surface-variant);
+  flex-shrink: 0;
+  z-index: 1;
+  transition: all var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+/* Daraltılmış durumdaki her bir kategori butonu için */
+:global(.is-collapsed) .itemButton {
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: var(--spacing-2);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Daraltılmış durumdaki butonun içindeki ikon sarmalayıcısı için */
+:global(.is-collapsed) .contentWrapper {
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+:global(.is-collapsed) .iconWrapper {
+  width: 24px;
+  height: 24px;
+}
+
+:global(.is-collapsed) .title,
+:global(.is-collapsed) .chevron {
+  display: none;
+}
+
+.dropdownContainer {
+  padding: var(--spacing-1) 0 var(--spacing-1) var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.addGroupButtonDropdown {
+  font-size: var(--typography-labelLarge-fontSize);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  height: 36px;
+  border-radius: var(--shape-corner-full);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: var(--color-on-surface-variant);
+  margin-top: var(--spacing-1);
+}
+
+.addGroupButtonDropdown:hover {
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface);
+}
+
+.dragHandle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: grab;
+  color: var(--color-on-surface-variant);
+  opacity: 0;
+  transition: opacity var(--motion-duration-medium);
+  z-index: 2;
+}
+
+:global(.edit-mode) .itemWrapper:hover .dragHandle {
+  opacity: 0.6;
+}
+
+:global(.edit-mode) .itemWrapper .dragHandle:hover {
+  opacity: 1;
+}
+
+:global(.edit-mode) .itemWrapper .dragHandle:active {
+  cursor: grabbing;
+}
+
+:global(.edit-mode) .chevron {
+  display: none;
+}
+
+.flyOutPanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  background-color: var(--color-surface);
+  box-shadow: var(--elevation-3);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--shape-corner-lg);
+  overflow: hidden;
+  z-index: var(--zIndex-z-dropdown, 300);
+}
+
+.flyOutPanelHeader {
+  padding: var(--spacing-3, 12px) var(--spacing-4, 16px);
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.flyOutPanelTitle {
+  font-size: var(--typography-titleMedium-fontSize);
+  font-weight: var(--typography-titleMedium-fontWeight);
+  line-height: var(--typography-titleMedium-lineHeight);
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+.flyOutPanelContent {
+  max-height: calc(80vh - 60px);
+  overflow-y: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flyout panel scrollbar */
+.flyOutPanelContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.flyOutPanelContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.flyOutPanelContent::-webkit-scrollbar-thumb {
+  background-color: var(--color-outline-variant);
+  border-radius: var(--shape-corner-full, 9999px);
+  border: 2px solid var(--color-surface);
+}
+
+.flyOutPanelContent::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-outline);
+}
+
+/* === ACCESSIBILITY IMPROVEMENTS === */
+/* Enhanced focus indicators */
+.itemButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ARIA live regions for dynamic content */
+.dropdownContainer[aria-live] {
+  position: relative;
+}
+
+.dropdownContainer[aria-live]::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: transparent;
+}
+
+/* === TYPOGRAPHY STANDARDIZATION === */
+/* Use standardized typography classes */
+.flyOutPanelTitle {
+  font-size: var(--typography-titleMedium-fontSize);
+  font-weight: var(--typography-titleMedium-fontWeight);
+  line-height: var(--typography-titleMedium-lineHeight);
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+/* === TOUCH TARGET OPTIMIZATION === */
+/* Ensure minimum touch targets for flyout panels */
+.flyOutPanel {
+  min-width: 200px;
+}
+
+.flyOutPanelContent {
+  min-height: 44px;
+}
+
+/* Enhanced touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .itemButton {
+    min-height: 48px;
+  }
+
+  .flyOutPanel {
+    min-width: 240px;
+  }
+}
+
+/* === ERROR HANDLING & LOADING STATES === */
+/* Loading state for categories */
+.categoryLoading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.categoryLoading .iconWrapper {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error state for categories */
+.categoryError {
+  border-left: 3px solid var(--color-error);
+}
+
+.categoryError .title {
+  color: var(--color-error);
+}
+
+/* === RESPONSIVE DESIGN ENHANCEMENTS === */
+/* Tablet optimizations */
+@media (min-width: var(--breakpoint-md)) and (max-width: calc(var(--breakpoint-lg) - 1px)) {
+  .flyOutPanel {
+    min-width: 220px;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: calc(var(--breakpoint-md) - 1px)) {
+  .flyOutPanel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 280px;
+    max-width: 90vw;
+    height: auto;
+    max-height: 80vh;
+    border-radius: var(--shape-corner-xl, 28px);
+  }
+
+  .flyOutPanelContent {
+    max-height: calc(80vh - 80px);
+  }
+
+  /* Hide flyout on mobile, use dropdown instead */
+  :global(.is-collapsed) .flyOutPanel {
+    display: none;
+  }
+}
+
+/* === COMPONENT LIBRARY === */
+/* Enhanced dropdown container */
+.dropdownContainer {
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Retry button for error messages */
+.retryButton {
+  margin-left: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--shape-corner-sm);
+  font-size: var(--typography-labelSmall-fontSize);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--motion-duration-short);
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.retryButton:hover {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.retryButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

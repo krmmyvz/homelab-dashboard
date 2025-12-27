@@ -1,0 +1,128 @@
+/* --- src/components/ToggleSwitch/ToggleSwitch.module.css --- */
+/* MD3 Compliant Switch Styles with Icon Support */
+
+.toggleContainer {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.toggleContainer.disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+}
+
+.label {
+    font-size: var(--typography-bodyMedium-fontSize);
+    color: var(--color-on-surface);
+    cursor: pointer;
+}
+
+.toggleContainer.disabled .label {
+    cursor: not-allowed;
+}
+
+.toggleSwitch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 32px;
+    cursor: pointer;
+    border-radius: var(--shape-corner-full);
+    transition: box-shadow var(--motion-duration-medium);
+}
+
+.toggleSwitch:focus-within {
+    box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.hiddenInput {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.hiddenInput:focus {
+    outline: none;
+}
+
+.hiddenInput:disabled+.slider {
+    cursor: not-allowed;
+}
+
+/* Track (background) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--shape-corner-full);
+    transition: box-shadow var(--motion-duration-medium);
+}
+
+.toggleSwitch:focus-within .slider {
+    box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* Handle (thumb) */
+.handle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    box-shadow: var(--elevation-1);
+}
+
+/* Handle with icon - ensure minimum size */
+.handleWithIcon {
+    min-width: 24px;
+    min-height: 24px;
+}
+
+/* Icon inside handle */
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Adjust icon color based on state */
+.hasIcons .handle {
+    color: var(--color-on-primary-container);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .toggleSwitch:focus-within {
+        box-shadow: 0 0 0 3px var(--color-primary);
+    }
+
+    .slider {
+        border-width: 3px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+
+    .toggleSwitch,
+    .slider,
+    .handle {
+        transition: none;
+    }
+}

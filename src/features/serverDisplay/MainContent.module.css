@@ -1,0 +1,373 @@
+.editModeActive {
+  background: linear-gradient(90deg, var(--color-surface-variant) 80%, transparent 100%);
+}
+
+.editModeButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  height: 48px;
+  border-radius: var(--shape-corner-full);
+  border: none;
+  background: var(--color-surface-container-high);
+  color: var(--color-on-surface);
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--typography-labelLarge-fontSize);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--motion-duration-long) var(--motion-easing-expressive);
+  box-shadow: var(--elevation-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.editModeButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-overlay-light), transparent);
+  transition: left var(--motion-duration-long);
+}
+
+.editModeButton:hover::before {
+  left: 100%;
+}
+
+.editModeButton:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
+}
+
+.editModeButton.active {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+  box-shadow: var(--elevation-3);
+  animation: pulse 2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editModeButton.active {
+    animation: none;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow: var(--elevation-3), 0 0 0 0 var(--color-primary);
+  }
+
+  50% {
+    box-shadow: var(--elevation-3), 0 0 0 8px transparent;
+  }
+}
+
+.editModeBanner {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-on-primary);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--shape-corner-xl);
+  margin-bottom: var(--spacing-6);
+  font-size: var(--typography-bodyMedium-fontSize);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  box-shadow: var(--elevation-2);
+  border: 1px solid var(--color-overlay-medium);
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: var(--spacing-5);
+  /* Mobil için padding */
+  overflow-y: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* YENİ: Daha büyük ekranlar için padding'i artır */
+@media (min-width: 768px) {
+  .mainContent {
+    padding: var(--spacing-6) var(--spacing-8);
+  }
+}
+
+
+.mainContentBody {
+  flex-grow: 1;
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  flex-shrink: 0;
+  padding-left: 0;
+}
+
+/* PC için daha fazla padding */
+@media (min-width: 768px) {
+  .mainHeader {
+    padding-left: 0;
+  }
+}
+
+.headerTextContent {
+  flex-grow: 1;
+}
+
+.mainTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--typography-headlineLarge-fontSize);
+  line-height: var(--typography-headlineLarge-lineHeight);
+  font-weight: 800;
+  /* Emphasized Weight for Expressive */
+  color: var(--color-on-background);
+  letter-spacing: -0.02em;
+}
+
+.mainSubtitle {
+  margin-top: var(--spacing-1);
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--typography-titleMedium-fontSize);
+  font-weight: 400;
+  color: var(--color-on-surface-variant);
+  opacity: 0.8;
+}
+
+.controlsWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-shrink: 0;
+}
+
+.viewToggle {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-1);
+  border-radius: var(--shape-corner-full);
+  background-color: var(--color-surface-variant);
+}
+
+.viewToggleButton {
+  padding: var(--spacing-2);
+  border-radius: var(--shape-corner-full);
+  border: none;
+  background-color: transparent;
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: all var(--motion-duration-medium);
+}
+
+.viewToggleButton:hover {
+  color: var(--color-on-surface);
+}
+
+.viewToggleButton.active {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  box-shadow: var(--elevation-1);
+}
+
+.tagsButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-outline);
+  border-radius: var(--shape-corner-full);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: all var(--motion-duration-medium);
+}
+
+.tagsButton:hover {
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface);
+}
+
+.tagFilterCount {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: var(--typography-labelSmall-fontSize);
+  font-weight: var(--typography-labelSmall-fontWeight);
+  width: 18px;
+  height: 18px;
+  border-radius: var(--shape-corner-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-surface);
+}
+
+.editControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  /* Sabit genişlik */
+  padding: 0;
+  border-radius: var(--shape-corner-full);
+  border: 1px solid var(--color-outline);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: all var(--motion-duration-medium);
+}
+
+.controlButton:hover {
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface);
+}
+
+.controlButton.active {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 400px;
+}
+
+.loadingSpinner {
+  border: 4px solid color-mix(in srgb, var(--color-on-surface) 10%, transparent);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: var(--color-primary);
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.serverList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* DÜZELTME: Grid yapısı artık daha esnek */
+.serverGrid {
+  display: grid;
+  /* Mobil için min genişlik 17.5rem (280px) */
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+  gap: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .serverGrid {
+    /* Tablet/Desktop için min genişlik 20rem (320px) */
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: var(--spacing-6);
+  }
+}
+
+
+.categoryContentLayout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.ungroupedContainer {
+  border-radius: var(--shape-corner-xl);
+  padding: var(--spacing-2);
+  transition: background-color var(--motion-duration-medium) var(--motion-easing-standard), box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
+  border: 2px solid transparent;
+  min-height: 150px;
+  background-color: var(--color-surface);
+}
+
+.ungroupedContainer.isOver {
+  background-color: var(--color-surface-variant);
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+.ungroupedTitle {
+  font-size: var(--typography-titleMedium-fontSize);
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--spacing-4);
+  padding-left: var(--spacing-2);
+}
+
+:global(.react-grid-layout) {
+  position: relative;
+  transition: height var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+:global(.react-grid-item) {
+  transition: all var(--motion-duration-short) var(--motion-easing-standard);
+  transition-property: left, top;
+}
+
+:global(.react-grid-item.cssTransforms) {
+  transition-property: transform;
+}
+
+:global(.react-grid-item.resizing) {
+  z-index: 1;
+  will-change: width, height;
+}
+
+:global(.react-grid-item.react-draggable-dragging) {
+  transition: none;
+  z-index: 3;
+  will-change: transform;
+}
+
+:global(.react-grid-item.dropping) {
+  visibility: hidden;
+}
+
+:global(.react-grid-placeholder) {
+  background: var(--color-primary);
+  opacity: 0.2;
+  border-radius: var(--shape-corner-lg);
+  transition-duration: var(--motion-duration-short1);
+  z-index: 2;
+  user-select: none;
+}

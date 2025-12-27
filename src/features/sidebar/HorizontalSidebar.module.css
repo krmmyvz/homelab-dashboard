@@ -1,0 +1,589 @@
+/* Horizontal Sidebar Styles */
+
+.horizontalSidebar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-outline-variant);
+  padding: var(--spacing-3) var(--spacing-5);
+  overflow: hidden;
+  z-index: 100;
+}
+
+/* Density variations */
+.horizontalSidebar[data-density="compact"] {
+  padding: var(--spacing-2) var(--spacing-4);
+  gap: var(--spacing-2);
+}
+
+.horizontalSidebar[data-density="spacious"] {
+  padding: var(--spacing-4) var(--spacing-6);
+  gap: var(--spacing-4);
+}
+
+/* Scroll container */
+.scrollContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scroll-behavior: smooth;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+/* Scroll buttons */
+.scrollButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--shape-corner-full);
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: var(--elevation-2);
+  color: var(--color-on-surface);
+  transition: all var(--motion-duration-short);
+}
+
+.scrollButton:hover {
+  box-shadow: var(--elevation-3);
+}
+
+.scrollLeft {
+  left: var(--spacing-2);
+}
+
+.scrollRight {
+  right: calc(var(--spacing-2) + 120px);
+  /* Space for action buttons */
+}
+
+/* Category wrapper */
+.categoryWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Category button */
+.categoryButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: transparent;
+  border: none;
+  border-radius: var(--shape-corner-md);
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: all var(--motion-duration-short);
+  white-space: nowrap;
+  font-size: var(--typography-bodyMedium-fontSize);
+  font-weight: 500;
+  min-height: 48px;
+}
+
+.categoryButton:hover {
+  background: var(--color-surface-variant);
+}
+
+.categoryButton.active {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.categoryButton .label {
+  font-size: var(--typography-bodyMedium-fontSize);
+  font-weight: 500;
+}
+
+.categoryButton .chevron {
+  margin-left: var(--spacing-1);
+  transition: transform var(--motion-duration-short);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-left: auto;
+  padding-left: var(--spacing-3);
+  border-left: 1px solid var(--color-outline-variant);
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: transparent;
+  border: none;
+  border-radius: var(--shape-corner-md);
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: all var(--motion-duration-short);
+  white-space: nowrap;
+  font-size: var(--typography-bodyMedium-fontSize);
+  font-weight: 500;
+  min-height: 48px;
+}
+
+.actionButton:hover {
+  background: var(--color-surface-variant);
+}
+
+/* Group dropdown */
+.groupDropdown {
+  position: fixed;
+  min-width: 200px;
+  max-width: 300px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--shape-corner-lg);
+  box-shadow: var(--elevation-3);
+  padding: var(--spacing-2);
+  z-index: var(--zIndex-z-sidebar-dropdown);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.groupItem {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-3);
+  background: transparent;
+  border: none;
+  border-radius: var(--shape-corner-md);
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: all var(--motion-duration-short);
+  text-align: left;
+  font-size: var(--typography-bodyMedium-fontSize);
+  white-space: nowrap;
+}
+
+.groupItem:hover {
+  background: var(--color-surface-variant);
+}
+
+.groupItem.active {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+  font-weight: 500;
+}
+
+/* Add menu dropdown */
+.addMenuDropdown {
+  position: fixed;
+  min-width: 180px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--shape-corner-lg);
+  box-shadow: var(--elevation-3);
+  padding: var(--spacing-2);
+  z-index: var(--zIndex-z-sidebar-dropdown);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.addMenuDropdown button {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-3);
+  background: transparent;
+  border: none;
+  border-radius: var(--shape-corner-md);
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: all var(--motion-duration-short);
+  text-align: left;
+  font-size: var(--typography-bodyMedium-fontSize);
+}
+
+.addMenuDropdown button:hover {
+  background: var(--color-surface-variant);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .horizontalSidebar {
+    padding: var(--spacing-2);
+  }
+
+  .categoryButton .label,
+  .actionButton .label {
+    display: none;
+  }
+
+  .scrollLeft {
+    left: var(--spacing-1);
+  }
+
+  .scrollRight {
+    right: calc(var(--spacing-1) + 80px);
+  }
+
+  .actions {
+    padding-left: var(--spacing-2);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+
+  .categoryButton,
+  .actionButton,
+  .groupItem {
+    min-height: 44px;
+    /* Touch target size */
+  }
+
+  .scrollContainer {
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
+  }
+}
+
+/* === ACCESSIBILITY IMPROVEMENTS === */
+/* Enhanced focus indicators */
+.categoryButton:focus-visible,
+.actionButton:focus-visible,
+.groupItem:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Screen reader support */
+.horizontalSidebar [aria-label] {
+  position: relative;
+}
+
+/* Skip navigation for horizontal sidebar */
+.horizontalSidebar::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: transparent;
+}
+
+/* === TYPOGRAPHY STANDARDIZATION === */
+/* Use standardized typography classes */
+.categoryButton .label,
+.actionButton .label {
+  font-size: var(--typography-bodyMedium-fontSize);
+  font-weight: 500;
+}
+
+.groupItem {
+  font-size: var(--typography-bodyMedium-fontSize);
+}
+
+.addMenuDropdown button {
+  font-size: var(--typography-bodyMedium-fontSize);
+}
+
+/* === TOUCH TARGET OPTIMIZATION === */
+/* Ensure minimum touch targets */
+.categoryButton,
+.actionButton {
+  min-height: 48px;
+}
+
+.groupItem {
+  min-height: 44px;
+}
+
+.scrollButton {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Enhanced touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+
+  .categoryButton,
+  .actionButton {
+    min-height: 52px;
+    padding: var(--spacing-4) var(--spacing-5);
+  }
+
+  .groupItem {
+    min-height: 48px;
+    padding: var(--spacing-4);
+  }
+
+  .scrollButton {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
+/* === ERROR HANDLING & LOADING STATES === */
+/* Loading state for horizontal sidebar */
+.horizontalSidebar.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.horizontalSidebar.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-primary);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 10;
+}
+
+/* Error state indicators */
+.categoryButton.error {
+  border-bottom: 2px solid var(--color-error);
+}
+
+.categoryButton.error .label {
+  color: var(--color-error);
+}
+
+/* === RESPONSIVE DESIGN ENHANCEMENTS === */
+/* Enhanced mobile optimizations (already exists, but improved) */
+@media (max-width: 768px) {
+  .horizontalSidebar {
+    padding: var(--spacing-3);
+    gap: var(--spacing-2);
+  }
+
+  .categoryButton .label,
+  .actionButton .label {
+    display: none;
+  }
+
+  .scrollLeft {
+    left: var(--spacing-2);
+  }
+
+  .scrollRight {
+    right: calc(var(--spacing-2) + 100px);
+  }
+
+  .actions {
+    padding-left: var(--spacing-3);
+  }
+
+  /* Better touch targets on mobile */
+  .categoryButton,
+  .actionButton {
+    min-width: 48px;
+    padding: var(--spacing-3);
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .horizontalSidebar {
+    padding: var(--spacing-4) var(--spacing-6);
+    gap: var(--spacing-4);
+  }
+
+  .categoryButton,
+  .actionButton {
+    padding: var(--spacing-4) var(--spacing-5);
+    min-height: 52px;
+  }
+
+  .scrollContainer {
+    gap: var(--spacing-4);
+  }
+}
+
+/* === COMPONENT LIBRARY === */
+/* Enhanced button styles */
+.categoryButton,
+.actionButton {
+  transition: all var(--motion-duration-short);
+  position: relative;
+  overflow: hidden;
+}
+
+.categoryButton::before,
+.actionButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--shape-corner-md);
+  background: var(--color-on-surface);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short);
+}
+
+.categoryButton:hover::before,
+.actionButton:hover::before {
+  opacity: 0.04;
+}
+
+.categoryButton:active::before,
+.actionButton:active::before {
+  opacity: 0.08;
+}
+
+.categoryButton.active::before {
+  opacity: 0.08;
+  background: var(--color-on-primary-container);
+}
+
+/* Enhanced dropdown styles */
+.groupDropdown,
+.addMenuDropdown {
+  background: var(--color-surface);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--shape-corner-lg);
+  box-shadow: var(--elevation-4);
+  overflow: hidden;
+}
+
+.groupItem,
+.addMenuDropdown button {
+  transition: all var(--motion-duration-short);
+  position: relative;
+  overflow: hidden;
+}
+
+.groupItem::before,
+.addMenuDropdown button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--shape-corner-md);
+  background: var(--color-on-surface);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short);
+}
+
+.groupItem:hover::before,
+.addMenuDropdown button:hover::before {
+  opacity: 0.04;
+}
+
+.groupItem:active::before,
+.addMenuDropdown button:active::before {
+  opacity: 0.08;
+}
+
+.groupItem.active::before {
+  opacity: 0.08;
+  background: var(--color-on-primary-container);
+}
+
+/* Enhanced scroll buttons */
+.scrollButton {
+  transition: all var(--motion-duration-short);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--shape-corner-full);
+  background: var(--color-on-surface);
+  opacity: 0;
+  transition: opacity var(--motion-duration-short);
+}
+
+.scrollButton:hover::before {
+  opacity: 0.04;
+}
+
+.scrollButton:active::before {
+  opacity: 0.08;
+}
+
+/* Error message */
+.errorMessage {
+  position: absolute;
+  top: 100%;
+  left: var(--spacing-3);
+  right: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background: var(--color-error-container);
+  color: var(--color-on-error-container);
+  border-radius: var(--shape-corner-md);
+  font-size: var(--typography-bodyMedium-fontSize);
+  border: 1px solid var(--color-error);
+  z-index: 1000;
+  box-shadow: var(--elevation-3);
+}
+
+.errorMessage.small {
+  padding: var(--spacing-2);
+  font-size: var(--typography-bodySmall-fontSize);
+}
+
+.errorMessage.medium {
+  padding: var(--spacing-3);
+  font-size: var(--typography-bodyMedium-fontSize);
+}
+
+.errorMessage.large {
+  padding: var(--spacing-4);
+  font-size: var(--typography-bodyLarge-fontSize);
+}
+
+/* Retry button for error messages */
+.retryButton {
+  margin-left: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--shape-corner-sm);
+  font-size: var(--typography-labelSmall-fontSize);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--motion-duration-short);
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.retryButton:hover {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.retryButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

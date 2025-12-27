@@ -1,0 +1,131 @@
+/* --- src/App.css --- */
+/* Scroll sorununu çözmek için ana layout stilleri güncellendi. */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  background-color: var(--color-background);
+  position: relative;
+  transition: all var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+/* Main content wrapper - header ve dashboard-body'yi içerir */
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sidebar position based layouts - sadece dashboard-body için */
+.dashboard.sidebar-top .dashboard-body {
+  flex-direction: column;
+}
+
+.dashboard.sidebar-bottom .dashboard-body {
+  flex-direction: column-reverse;
+}
+
+.dashboard.sidebar-left .dashboard-body {
+  flex-direction: row;
+}
+
+.dashboard.sidebar-right .dashboard-body {
+  flex-direction: row-reverse;
+}
+
+/* Overlay backdrop */
+.sidebar-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--color-scrim-light);
+  z-index: var(--zIndex-z-sidebar);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+.dashboard.sidebar-mode-overlay .sidebar-overlay-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Arka plan deseni için container */
+.dashboard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  transition: opacity var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+.dashboard-body {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+  /* Kenar çubuğunun taşmasını engellemek için bu gerekli */
+  min-height: 0;
+  /* Flexbox'ın içeriği küçültebilmesi için */
+  position: relative;
+}
+
+/* Özel arka plan aktif olduğunda, dashboard'un kendi arka planını şeffaf yapar */
+.dashboard.has-custom-wallpaper {
+  background-color: transparent !important;
+}
+
+.wallpaper-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-scrim-dark);
+  z-index: var(--zIndex-z-sidebar);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.dashboard.mobile-menu-open .mobile-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dnd-overlay {
+  z-index: var(--zIndex-z-dnd-overlay);
+  pointer-events: none;
+}
+
+/* DÜZELTME: Bu sarmalayıcı, çocuğunun (MainContent) taşmasına izin vermeli. */
+.main-view-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Flexbox'ın daralabilmesi için önemli */
+  min-height: 0;
+  /* Flexbox'ın küçülebilmesi için */
+  position: relative;
+  /* Gerekirse iç öğelerin konumlandırılması için */
+  overflow: hidden;
+  /* İçerik taşmasını kontrol et */
+  z-index: 1;
+  /* Arka plan deseninin üstünde */
+}

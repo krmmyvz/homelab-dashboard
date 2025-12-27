@@ -1,0 +1,321 @@
+/* === BASE BUTTON STYLES === */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    border: none;
+    border-radius: var(--shape-corner-full);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    line-height: var(--typography-labelLarge-lineHeight);
+    letter-spacing: var(--typography-labelLarge-letterSpacing);
+    cursor: pointer;
+    transition: background-color var(--motion-duration-short) var(--motion-easing-standard),
+        color 200ms ease,
+        box-shadow 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
+        transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
+        border-color 200ms ease;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    /* Create stacking context for state layer and ripple */
+}
+
+/* State Layer (Overlay) */
+.button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity var(--motion-duration-short) var(--motion-easing-standard);
+    pointer-events: none;
+    z-index: 1;
+    /* Above ripple but behind content */
+}
+
+.button:hover:not(.disabled):not(.loading)::after {
+    opacity: 0.08;
+    /* MD3 Hover state opacity */
+}
+
+.button:active:not(.disabled):not(.loading)::after {
+    opacity: 0.12;
+    /* MD3 Pressed state opacity */
+}
+
+.button:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* === SIZE VARIANTS === */
+.small {
+    min-height: 2.25rem;
+    /* 36px */
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--typography-labelMedium-fontSize);
+}
+
+.medium {
+    min-height: 3rem;
+    /* 48px - MD3 standard height */
+    padding: var(--spacing-3) var(--spacing-5);
+    font-size: var(--typography-labelLarge-fontSize);
+}
+
+.large {
+    min-height: 3.5rem;
+    /* 56px */
+    padding: var(--spacing-4) var(--spacing-6);
+    font-size: var(--typography-labelLarge-fontSize);
+}
+
+/* Icon-only buttons */
+.iconOnly.small {
+    min-width: 2.25rem;
+    padding: var(--spacing-2);
+}
+
+.iconOnly.medium {
+    min-width: 3rem;
+    padding: var(--spacing-3);
+}
+
+.iconOnly.large {
+    min-width: 3.5rem;
+    padding: var(--spacing-4);
+}
+
+/* ============================================
+   MD3 COLOR VARIANTS
+   ============================================ */
+
+/* --- MD3 Filled Button (Primary) --- */
+.filled {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.filled:hover:not(.disabled):not(.loading) {
+    box-shadow: var(--elevation-1);
+}
+
+/* Legacy alias */
+.primary {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.primary:hover:not(.disabled):not(.loading) {
+    box-shadow: var(--elevation-1);
+}
+
+/* --- MD3 Filled Tonal Button --- */
+.filledTonal {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+}
+
+.filledTonal:hover:not(.disabled):not(.loading) {
+    box-shadow: var(--elevation-1);
+}
+
+/* Legacy aliases */
+.secondary {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+}
+
+.secondary:hover:not(.disabled):not(.loading) {
+    box-shadow: var(--elevation-1);
+}
+
+.tertiary {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+}
+
+/* --- MD3 Outlined Button (NEW) --- */
+.outlined {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-outline);
+}
+
+.outlined:hover:not(.disabled):not(.loading) {
+    background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    border-color: var(--color-primary);
+}
+
+.outlined:focus-visible {
+    border-color: var(--color-primary);
+}
+
+/* --- MD3 Elevated Button (NEW) --- */
+.elevated {
+    background-color: var(--color-surface-container-low);
+    color: var(--color-primary);
+    box-shadow: var(--elevation-1);
+}
+
+.elevated:hover:not(.disabled):not(.loading) {
+    box-shadow: var(--elevation-2);
+    background-color: var(--color-surface-container);
+}
+
+.elevated:active:not(.disabled):not(.loading) {
+    box-shadow: var(--elevation-1);
+}
+
+/* --- MD3 Text Button --- */
+.text {
+    background-color: transparent;
+    color: var(--color-primary);
+    padding-left: var(--spacing-3);
+    padding-right: var(--spacing-3);
+}
+
+.text:hover:not(.disabled):not(.loading) {
+    background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+/* Legacy alias */
+.ghost {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.ghost:hover:not(.disabled):not(.loading) {
+    background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+/* --- Danger Button --- */
+.danger {
+    background-color: var(--color-error);
+    color: var(--color-on-error);
+}
+
+.danger:hover:not(.disabled):not(.loading) {
+    box-shadow: var(--elevation-1);
+}
+
+/* === STATE VARIANTS === */
+
+/* Disabled State - MD3 specifies 38% opacity */
+.disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Loading State */
+.loading {
+    cursor: wait;
+    pointer-events: none;
+}
+
+.loading .label {
+    opacity: 0;
+}
+
+/* Full Width */
+.fullWidth {
+    width: 100%;
+}
+
+/* === LOADING SPINNER === */
+.loadingSpinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+.spinnerCircle {
+    stroke: currentColor;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 45;
+    stroke-linecap: round;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* === ICON STYLES === */
+.icon,
+.endIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 2;
+    /* Above state layer */
+}
+
+.label {
+    z-index: 2;
+    /* Above state layer */
+}
+
+.icon {
+    margin-right: calc(var(--spacing-1) * -1);
+}
+
+.endIcon {
+    margin-left: calc(var(--spacing-1) * -1);
+}
+
+.iconOnly .icon {
+    margin: 0;
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+
+    .button,
+    .spinner {
+        animation: none;
+        transition: none;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .button {
+        border: 2px solid currentColor;
+    }
+
+    .outlined {
+        border-width: 2px;
+    }
+
+    .button:focus-visible {
+        outline: 4px solid var(--color-primary);
+    }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+    .button {
+        min-width: 48px;
+        /* Touch target */
+    }
+}
