@@ -49,7 +49,8 @@ export default class DatabaseManager {
         database: this.config.database,
         waitForConnections: true,
         connectionLimit: this.config.connectionLimit,
-        queueLimit: 0
+        queueLimit: 0,
+        ssl: { rejectUnauthorized: false } // Disable SSL verification
       });
 
       const connection = await this.pool.getConnection();

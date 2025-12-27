@@ -74,7 +74,7 @@
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 44px;
+    height: 48px;
     /* Minimum touch target */
     background: transparent;
     outline: none;
@@ -111,7 +111,7 @@
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
-    height: 44px;
+    height: 48px;
     /* Touch target */
     background: var(--color-primary);
     border-radius: var(--shape-corner-full);
@@ -122,14 +122,14 @@
 }
 
 .slider::-webkit-slider-thumb:active {
-    transform: scale(1.15);
+    transform: scale(0.85);
     cursor: grabbing;
 }
 
 /* Firefox Slider Thumb */
 .slider::-moz-range-thumb {
     width: 20px;
-    height: 44px;
+    height: 48px;
     background: var(--color-primary);
     border-radius: var(--shape-corner-full);
     border: 3px solid var(--color-surface);
@@ -138,7 +138,7 @@
 }
 
 .slider::-moz-range-thumb:active {
-    transform: scale(1.15);
+    transform: scale(0.85);
     cursor: grabbing;
 }
 
