@@ -248,14 +248,28 @@
   font-size: 11px;
   /* M3 Label Small */
   font-weight: 500;
-  line-height: 16px;
+  line-height: 14px;
+  /* Tighter line height for multiline */
   letter-spacing: 0.5px;
   z-index: 1;
   color: var(--color-on-surface-variant);
   opacity: 1;
   /* Ensure visible */
-  display: block;
-  /* Show label */
+  display: -webkit-box;
+  /* Enable clamping */
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  /* Standard property */
+  /* Max 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  /* Allow wrapping */
+  word-wrap: break-word;
+  max-width: 100%;
+  padding: 0 4px;
+  /* Prevent text touching edges */
 }
 
 /* Active Label Color */
