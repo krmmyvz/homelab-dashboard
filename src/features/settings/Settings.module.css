@@ -367,7 +367,9 @@
     letter-spacing: var(--typography-labelLarge-letterSpacing);
     cursor: pointer;
     border-radius: var(--shape-corner-full);
-    transition: all var(--motion-duration-short) var(--motion-easing-standard);
+    transition: background-color var(--motion-duration-short) var(--motion-easing-standard),
+        border-color var(--motion-duration-short) var(--motion-easing-standard),
+        color var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .segmentedButton:hover {
@@ -1032,7 +1034,9 @@ button.iconOnly,
     font-size: var(--typography-labelLarge-fontSize);
     font-weight: var(--typography-labelLarge-fontWeight);
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 4px var(--color-overlay-dark);
     min-width: 100px;
 }
@@ -1437,7 +1441,9 @@ button.iconOnly,
     background-color: var(--color-surface-container-low);
     color: var(--color-on-surface);
     border: 1px solid var(--color-outline-variant);
-    transition: all var(--motion-duration-medium);
+    transition: border-color var(--motion-duration-medium),
+        background-color var(--motion-duration-medium),
+        box-shadow var(--motion-duration-medium);
 }
 
 .settingsSearchInput:focus {
@@ -1480,7 +1486,9 @@ button.iconOnly,
     font-weight: 500;
     border: 1px solid var(--color-outline-variant);
     cursor: pointer;
-    transition: all var(--motion-duration-short);
+    transition: background-color var(--motion-duration-short),
+        border-color var(--motion-duration-short),
+        color var(--motion-duration-short);
 }
 
 .filterTag:hover {
@@ -1540,7 +1548,8 @@ button.iconOnly,
     font-size: var(--typography-bodyMedium-fontSize);
     font-weight: 500;
     cursor: pointer;
-    transition: all var(--motion-duration-medium) var(--motion-easing-standard);
+    transition: background-color var(--motion-duration-medium) var(--motion-easing-standard),
+        color var(--motion-duration-medium) var(--motion-easing-standard);
     white-space: nowrap;
     position: relative;
 }
