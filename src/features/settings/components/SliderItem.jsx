@@ -1,7 +1,8 @@
-// --- src/features/settings/components/SliderItem.jsx (YENİ DOSYA) ---
+// --- src/features/settings/components/SliderItem.jsx ---
 
 import React from 'react';
-import styles from '../Settings.module.css';
+import styles from './SliderItem.module.css';
+import settingsStyles from '../Settings.module.css';
 
 // Bu bileşen, bir ayar öğesi içinde slider'ı (kaydırıcı) standart hale getirir.
 const SliderItem = ({
@@ -59,7 +60,7 @@ const SliderItem = ({
     };
 
     return (
-        <div className={styles.settingsListItem}>
+        <div className={settingsStyles.settingsListItem}>
             <div className={styles.sliderItemRow}>
                 {Icon && <Icon size={24} className={styles.iconWrapper} aria-hidden="true" />}
                 <div className={styles.textContent}>
@@ -70,15 +71,15 @@ const SliderItem = ({
                     {`${value}${unit ? ` ${unit}` : ''}`}
                 </div>
                 <div className={styles.sliderContainer}>
-                    <div className={styles.sliderTrack} aria-hidden="true"/>
-                    <div className={styles.sliderFill} style={{width: `${fillPercent}%`}} aria-hidden="true"/>
+                    <div className={styles.sliderTrack} aria-hidden="true" />
+                    <div className={styles.sliderFill} style={{ width: `${fillPercent}%` }} aria-hidden="true" />
                     <input
                         type="range"
                         min={min}
                         max={max}
                         step={step}
                         value={value}
-                        className={`${styles.slider} ${styles.focusVisible}`}
+                        className={styles.slider}
                         onChange={handleChange}
                         onKeyDown={handleKeyDown}
                         disabled={disabled}
