@@ -16,7 +16,9 @@
   font-size: var(--typography-labelLarge-fontSize);
   font-weight: 700;
   cursor: pointer;
-  transition: all var(--motion-duration-long) var(--motion-easing-expressive);
+  transition: background-color var(--motion-duration-long) var(--motion-easing-expressive),
+    box-shadow var(--motion-duration-long) var(--motion-easing-expressive),
+    transform var(--motion-duration-long) var(--motion-easing-expressive);
   box-shadow: var(--elevation-1);
   position: relative;
   overflow: hidden;
@@ -173,7 +175,9 @@
   background-color: transparent;
   color: var(--color-on-surface-variant);
   cursor: pointer;
-  transition: all var(--motion-duration-medium);
+  transition: background-color var(--motion-duration-medium),
+    color var(--motion-duration-medium),
+    box-shadow var(--motion-duration-medium);
 }
 
 .viewToggleButton:hover {
@@ -198,7 +202,8 @@
   background-color: var(--color-surface);
   color: var(--color-on-surface-variant);
   cursor: pointer;
-  transition: all var(--motion-duration-medium);
+  transition: background-color var(--motion-duration-medium),
+    color var(--motion-duration-medium);
 }
 
 .tagsButton:hover {
@@ -242,7 +247,8 @@
   background-color: var(--color-surface);
   color: var(--color-on-surface-variant);
   cursor: pointer;
-  transition: all var(--motion-duration-medium);
+  transition: background-color var(--motion-duration-medium),
+    color var(--motion-duration-medium);
 }
 
 .controlButton:hover {
@@ -340,7 +346,8 @@
 }
 
 :global(.react-grid-item) {
-  transition: all var(--motion-duration-short) var(--motion-easing-standard);
+  transition: left var(--motion-duration-short) var(--motion-easing-standard),
+    top var(--motion-duration-short) var(--motion-easing-standard);
   transition-property: left, top;
 }
 
