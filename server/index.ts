@@ -124,19 +124,38 @@ wss.on('connection', (ws) => {
 });
 
 async function start() {
-    await db.initialize();
-    await cache.initialize();
-    await analytics.initialize();
+    const dbResult = await db.initialize();
+    if (!dbResult?.success) {
+        console.error('⚠️ Failed to connect to primary database. Starting in limited mode.');
+    }
 
-    // Initialize StatusMonitor
-    const servers = await db.getAllServers();
-    statusMonitor = new StatusMonitor({ servers });
-    // @ts-ignore
-    global.statusMonitor = statusMonitor;
-    statusMonitor.startMonitoring();
+    try {
+        await cache.initialize();
+        await analytics.initialize();
+
+        // Initialize StatusMonitor safely
+        let servers = [];
+        try {
+            if (db.isConnected) {
+                servers = await db.getAllServers();
+            }
+        } catch (e) {
+            console.error('Failed to fetch servers for monitor:', e);
+        }
+
+        statusMonitor = new StatusMonitor({ servers });
+        // @ts-ignore
+        global.statusMonitor = statusMonitor;
+        statusMonitor.startMonitoring();
+    } catch (error) {
+        console.error('⚠️ Error during service initialization:', error);
+    }
 
     httpServer.listen(PORT, () => {
         console.log(`🚀 Server running on http://localhost:${PORT}`);
+        if (!dbResult?.success) {
+            console.warn('⚠️ WARNING: Server running without database connection!');
+        }
     });
 }
 

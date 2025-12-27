@@ -162,7 +162,12 @@ export class DataController {
     saveData = async (req: Request, res: Response) => {
         try {
             const { settings } = req.body;
-            if (settings && this.db.isConnected) {
+
+            if (!this.db.isConnected) {
+                return res.status(503).json({ error: 'Database not connected. Changes cannot be saved.' });
+            }
+
+            if (settings) {
                 await this.db.query(`
           CREATE TABLE IF NOT EXISTS dashboard_settings (
             id INT AUTO_INCREMENT PRIMARY KEY,
