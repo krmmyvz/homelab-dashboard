@@ -1,8 +1,8 @@
 .groupContainer {
   display: flex;
   flex-direction: column;
-  /* M3 Outlined Card: Surface Container Low + Outline */
-  background: var(--color-surface-container-low);
+  /* M3 Outlined Card: Transparent + Outline */
+  background: transparent;
   /* M3 Large Shape: 16dp */
   border-radius: var(--shape-corner-lg);
   border: 1px solid var(--color-outline-variant);
