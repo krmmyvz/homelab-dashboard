@@ -1,18 +1,22 @@
 .groupContainer {
   display: flex;
   flex-direction: column;
-  background: var(--color-surface);
-  border-radius: var(--shape-corner-extra-large);
+  /* M3 Outlined Card: Surface Container Low + Outline */
+  background: var(--color-surface-container-low);
+  /* M3 Large Shape: 16dp */
+  border-radius: var(--shape-corner-lg);
   border: 1px solid var(--color-outline-variant);
   overflow: hidden;
   transition: box-shadow var(--motion-duration-long) var(--motion-easing-expressive),
     border-color var(--motion-duration-long) var(--motion-easing-expressive);
-  box-shadow: var(--elevation-1);
+  /* Use Outline, no shadow for resting state */
+  box-shadow: none;
 }
 
 .groupContainer:hover {
-  box-shadow: var(--elevation-2);
+  /* Subtle lift on hover if interactive, or just border highlight */
   border-color: var(--color-outline);
+  box-shadow: var(--elevation-1);
 }
 
 .groupContainer.isDropTarget {
@@ -32,14 +36,16 @@
   align-items: center;
   gap: var(--spacing-3);
   padding: var(--spacing-5);
-  background: var(--color-surface-container-low);
+  /* Integrated Header: Transparent background */
+  background: transparent;
   border-bottom: 1px solid var(--color-outline-variant);
   min-height: 72px;
   transition: background var(--motion-duration-medium) var(--motion-easing-expressive);
 }
 
 .groupHeader:hover {
-  background: var(--color-surface-container);
+  /* Very subtle highlight on header hover */
+  background: color-mix(in srgb, var(--color-on-surface) 2%, transparent);
 }
 
 .collapseToggle {
