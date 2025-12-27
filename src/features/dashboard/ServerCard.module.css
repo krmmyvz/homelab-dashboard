@@ -3,40 +3,58 @@
    Material Design 3 Expressive with proper tokens
    ========================================== */
 
+/* M3 Standard Filled Card */
 .widget {
   position: relative;
   width: 100%;
   height: 100%;
-  /* Glass Morphism: Background with opacity, text opaque */
-  background: color-mix(in srgb, var(--color-surface-container-low) calc(var(--card-opacity, 100) * 1%), transparent);
-  border-radius: var(--shape-corner-xl);
-  padding: var(--spacing-5);
+  /* M3 Filled Card: Surface Container Highest */
+  background: var(--color-surface-container-highest);
+  /* M3 Medium Shape: 12dp */
+  border-radius: var(--shape-corner-md);
+  /* M3 Standard Padding: 16dp */
+  padding: var(--spacing-4);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
-  /* M3 Expressive: No shadow for resting state */
+  gap: var(--spacing-2);
+  /* M3 Filled Card: No shadow in resting state */
   box-shadow: none;
   cursor: pointer;
   user-select: none;
-  transition: background var(--motion-duration-long) var(--motion-easing-expressive),
-    box-shadow var(--motion-duration-long) var(--motion-easing-expressive),
-    border-color var(--motion-duration-long) var(--motion-easing-expressive);
-  /* Glass Texture */
-  backdrop-filter: blur(var(--card-blur, 0));
-  -webkit-backdrop-filter: blur(var(--card-blur, 0));
+  border: none;
+  /* Transitions for hover and state changes */
+  transition: background-color var(--motion-duration-short) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-short) var(--motion-easing-standard),
+    transform var(--motion-duration-short) var(--motion-easing-standard);
+  /* Ensure focus ring is visible */
+  outline: none;
 }
 
+/* Hover State: Elevation 1 + State Layer */
 .widget:hover {
-  background: color-mix(in srgb, var(--color-surface-container-high) calc(var(--card-opacity, 100) * 1%), transparent);
+  /* Keep background same, overlay handled by elevation in M3 or slightly darken */
   box-shadow: var(--elevation-1);
-  /* Subtle lift only on hover */
-  border-top-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
+}
+
+/* Focus State: Standard Focus Ring */
+.widget:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Active/Pressed State */
+.widget:active {
+  /* Simulate Pressed State Layer (12%) */
+  background: color-mix(in srgb, var(--color-surface-container-highest), var(--color-on-surface) 12%);
+  transform: scale(0.98);
+  /* Tactile feedback */
 }
 
 .editMode {
   cursor: grab;
+  /* Edit mode visual cue */
+  outline: 2px dashed var(--color-outline-variant);
+  outline-offset: -2px;
 }
 
 .editMode:active {
@@ -57,62 +75,71 @@
 }
 
 .iconContainer {
-  width: calc(var(--spacing-10) + var(--spacing-1));
-  height: calc(var(--spacing-10) + var(--spacing-1));
-  border-radius: var(--shape-corner-lg);
+  /* M3 Standard Icon Container: 40dp */
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  /* Circle shape for icons inside cards */
+  border-radius: var(--shape-corner-full);
   background: var(--color-primary-container);
   color: var(--color-on-primary-container);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: var(--elevation-1);
+  box-shadow: none;
+  /* No shadow inside filled card */
   transition: transform var(--motion-duration-short) var(--motion-easing-emphasized),
-    box-shadow var(--motion-duration-short) var(--motion-easing-emphasized);
+    background-color var(--motion-duration-short) var(--motion-easing-standard);
   position: relative;
 }
 
 .widget:hover .iconContainer {
   transform: scale(1.05);
-  box-shadow: var(--elevation-2);
+  /* Gentle highlight on hover */
+  filter: brightness(1.05);
 }
 
 /* Favorite Badge - Icon Top Left Corner */
 .favoriteBadge {
   position: absolute;
-  top: calc(var(--spacing-1) * -0.5);
-  left: calc(var(--spacing-1) * -0.5);
-  width: var(--spacing-4);
-  height: var(--spacing-4);
+  top: -2px;
+  right: -2px;
+  left: auto;
+  /* Move to top-right of icon */
+  width: 14px;
+  height: 14px;
   border-radius: var(--shape-corner-full);
-  background: linear-gradient(135deg, var(--color-warning), var(--color-warning-dark));
-  color: white;
+  background: var(--color-tertiary);
+  /* Use tertiary for favorite */
+  color: var(--color-on-tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--elevation-2);
+  box-shadow: 0 0 0 2px var(--color-surface-container-highest);
+  /* Border matches card bg */
   z-index: 2;
-  border: 2px solid var(--color-surface);
 }
 
 .responseTimeBadge {
   position: absolute;
-  top: var(--spacing-2);
-  right: calc(var(--spacing-2) + var(--spacing-6) + var(--spacing-1));
+  top: 0;
+  right: calc(var(--spacing-2) + var(--spacing-6));
+  /* Adjust for header layout */
   display: flex;
   align-items: center;
   gap: var(--spacing-1);
-  padding: calc(var(--spacing-1) * 0.5) var(--spacing-2);
-  background: var(--color-surface-container-highest);
+  padding: 0 var(--spacing-2);
+  background: var(--color-surface);
+  /* Contrast against card bg */
   border: 1px solid var(--color-outline-variant);
   border-radius: var(--shape-corner-full);
   font-family: var(--typography-labelSmall-fontFamily);
   font-size: var(--typography-labelSmall-fontSize);
   font-weight: var(--typography-labelSmall-fontWeight);
   color: var(--color-on-surface);
-  box-shadow: var(--elevation-1);
+  /* No shadow */
   z-index: 10;
-  height: var(--spacing-5);
+  height: 24px;
 }
 
 .responseTimeBadge svg {
@@ -122,25 +149,24 @@
 
 .statusIndicator {
   position: absolute;
-  top: var(--spacing-2);
-  right: var(--spacing-2);
+  top: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: 0 var(--spacing-2);
   border-radius: var(--shape-corner-full);
-  background: var(--color-surface-container);
+  background: var(--color-surface);
   border: 1px solid var(--color-outline-variant);
-  transition: background var(--motion-duration-medium) var(--motion-easing-expressive),
-    color var(--motion-duration-medium) var(--motion-easing-expressive),
-    border-color var(--motion-duration-medium) var(--motion-easing-expressive);
-  box-shadow: var(--elevation-1);
+  transition: background-color var(--motion-duration-medium) var(--motion-easing-standard),
+    border-color var(--motion-duration-medium) var(--motion-easing-standard);
+  /* No shadow */
   z-index: 10;
   font-family: var(--typography-labelSmall-fontFamily);
   font-size: var(--typography-labelSmall-fontSize);
   font-weight: var(--typography-labelSmall-fontWeight);
   color: var(--color-on-surface);
-  height: var(--spacing-5);
+  height: 24px;
 }
 
 /* Dynamic colors for badge */

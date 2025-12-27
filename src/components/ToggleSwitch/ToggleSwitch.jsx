@@ -19,16 +19,30 @@ const trackVariants = {
 
 const handleVariants = {
   unchecked: {
-    x: 0,
+    x: 4,
     width: 16,
     height: 16,
     backgroundColor: 'var(--color-outline)',
   },
   checked: {
-    x: 20,
+    x: 24,
     width: 24,
     height: 24,
     backgroundColor: 'var(--color-onPrimary)',
+  },
+};
+
+// M3 Pressed state - handle grows to 28dp
+const handlePressedVariants = {
+  unchecked: {
+    x: 2,
+    width: 28,
+    height: 28,
+  },
+  checked: {
+    x: 22,
+    width: 28,
+    height: 28,
   },
 };
 
@@ -77,7 +91,6 @@ const ToggleSwitch = ({
 
       <motion.label
         className={`${styles.toggleSwitch} ${hasIcons ? styles.hasIcons : ''}`}
-        whileTap={disabled ? undefined : { scale: 0.95 }}
       >
         <input
           id={switchId}
@@ -98,10 +111,13 @@ const ToggleSwitch = ({
           transition={motionTokens.springs.fastEffects}
           aria-hidden="true"
         />
+        {/* M3 State Layer - 40dp hover/focus indicator */}
+        <span className={styles.stateLayer} aria-hidden="true" />
         <motion.span
           className={`${styles.handle} ${hasIcons ? styles.handleWithIcon : ''}`}
           animate={checked ? 'checked' : 'unchecked'}
           variants={handleVariants}
+          whileTap={disabled ? undefined : handlePressedVariants[checked ? 'checked' : 'unchecked']}
           transition={motionTokens.springs.fastSpatial}
           layout
           aria-hidden="true"

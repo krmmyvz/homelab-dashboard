@@ -73,11 +73,48 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    left: 4px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
     box-shadow: var(--elevation-1);
+    z-index: 2;
+}
+
+/* M3 State Layer - 40dp indicator for hover/focus */
+.stateLayer {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: background-color var(--motion-duration-short) var(--motion-easing-standard),
+        left var(--motion-duration-short) var(--motion-easing-standard);
+    z-index: 1;
+}
+
+/* State layer position for checked state */
+.hiddenInput:checked~.stateLayer {
+    left: 18px;
+}
+
+/* State layer hover - 8% opacity */
+.toggleSwitch:hover .stateLayer {
+    background-color: color-mix(in srgb, var(--color-on-surface) 8%, transparent);
+}
+
+/* State layer focus - 10% opacity */
+.hiddenInput:focus-visible~.stateLayer {
+    background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+/* State layer pressed - 12% opacity (handled by JS animation) */
+.toggleSwitch:active .stateLayer {
+    background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
 }
 
 /* Handle with icon - ensure minimum size */
