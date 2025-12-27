@@ -6,10 +6,14 @@
     width: 100%;
     border-radius: var(--shape-corner-xl);
     overflow: hidden;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-outline-variant);
-    box-shadow: var(--elevation-1);
-    padding: var(--spacing-6);
+    /* M3 Filled Card: Surface Container Low */
+    background-color: var(--color-surface-container-low);
+    /* No border for Filled Card */
+    border: none;
+    box-shadow: none;
+    /* M3 Filled Card has no shadow at resting */
+    padding: var(--spacing-4);
+    /* Reduced padding (16px) */
 }
 
 .groupHeader {
@@ -17,10 +21,10 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    padding: 0 0 var(--spacing-5);
+    padding: 0 0 var(--spacing-3);
     background-color: transparent;
     border: none;
-    margin: 0 0 var(--spacing-4);
+    margin: 0 0 var(--spacing-2);
 }
 
 .headerLeft {
@@ -49,7 +53,10 @@
     gap: var(--spacing-0);
     border-radius: var(--shape-corner-lg);
     overflow: hidden;
-    border: 1px solid var(--color-outline-variant);
+    /* Remove inner border to avoid double border */
+    border: none;
+    background-color: var(--color-surface);
+    /* Inner list background */
 }
 
 /* Responsive padding */
@@ -57,7 +64,7 @@
     .settingsGroup {
         padding: var(--spacing-7) var(--spacing-8);
     }
-    
+
     .groupHeader {
         padding: 0 0 var(--spacing-6);
         margin: 0 0 var(--spacing-5);
@@ -68,7 +75,7 @@
     .settingsGroup {
         padding: var(--spacing-8) var(--spacing-10);
     }
-    
+
     .headerTitle {
         font-size: var(--typography-headlineSmall-fontSize);
     }
