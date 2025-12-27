@@ -146,7 +146,8 @@
   color: var(--color-on-surface-variant);
   border-radius: var(--shape-corner-full);
   cursor: pointer;
-  transition: all var(--motion-duration-medium) var(--motion-easing-expressive);
+  transition: background-color var(--motion-duration-medium) var(--motion-easing-expressive),
+    color var(--motion-duration-medium) var(--motion-easing-expressive);
   position: relative;
   overflow: hidden;
 }
@@ -273,7 +274,9 @@
   height: 40px;
   background-color: var(--color-outline-variant);
   border-radius: var(--shape-corner-full);
-  transition: all var(--motion-duration-short) var(--motion-easing-standard);
+  transition: background-color var(--motion-duration-short) var(--motion-easing-standard),
+    width var(--motion-duration-short) var(--motion-easing-standard),
+    height var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .resizeHandle:hover::after,
@@ -476,7 +479,8 @@
   border: none;
   border-radius: var(--shape-corner-full);
   cursor: pointer;
-  transition: all var(--motion-duration-short);
+  transition: background-color var(--motion-duration-short),
+    color var(--motion-duration-short);
   position: relative;
   overflow: hidden;
 }
@@ -538,7 +542,7 @@
   border-radius: var(--shape-corner-md);
   color: var(--color-on-surface);
   cursor: pointer;
-  transition: all var(--motion-duration-short);
+  transition: background var(--motion-duration-short);
   text-align: left;
   font-size: var(--typography-bodyMedium-fontSize);
   white-space: nowrap;
